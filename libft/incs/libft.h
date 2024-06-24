@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 13:37:52 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/24 15:05:57 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:43:31 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ void	ft_putuns_len(unsigned int n, int *counter);
 
 void	ft_getaddress(void *ptr, int *counter);
 
+void	ft_gnlcpy(char *dst, char const *src, size_t size);
+
 void	*ft_memset(void *s, int c, size_t n);
 
 void	*ft_memcpy(void *dest, const void *src, size_t n);
@@ -104,6 +106,12 @@ char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+
+char	*ft_gnljoin(char const *s1, char const *s2);
+
+char	*ft_gnldup(char const *src);
+
+void	ft_gnlcpy(char *dst, char const *src, size_t size);
 
 char	*ft_get_next_line(int fd);
 

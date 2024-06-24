@@ -6,35 +6,11 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 10:02:04 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/24 15:05:41 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:42:20 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static char	*ft_gnljoin(char const *s1, char const *s2)
-{
-	char	*str;
-	size_t	lens1;
-	size_t	lens2;
-
-	if (!s1)
-		return (ft_strdup(s2));
-	if (!s2)
-	{
-		free((void *)s1);
-		return (NULL);
-	}
-	lens1 = ft_strlen(s1);
-	lens2 = ft_strlen(s2);
-	str = malloc(sizeof(char) * (lens1 + lens2 + 1));
-	if (!str)
-		return (NULL);
-	ft_strlcpy(str, s1, lens1);
-	ft_strlcpy(&(str[lens1]), s2, lens2);
-	free((void *)s1);
-	return (str);
-}
 
 static int	ft_free(char **str, char *buff)
 {
@@ -60,15 +36,15 @@ static char	*ft_trim_line(char **tab, int fd)
 	tmp = malloc(sizeof(char) * (i + 2));
 	if (!tmp)
 		return (NULL);
-	ft_strlcpy(tmp, tab[fd], (i + 1));
+	ft_gnlcpy(tmp, tab[fd], (i + 1));
 	if (tab[fd] && tab[fd][i] == '\n' && tab[fd][i + 1])
 	{
-		tmp2 = ft_strdup(&(tab[fd][++i]));
-		ft_free(&tab[fd], ft_strdup(""));
+		tmp2 = ft_gnldup(&(tab[fd][++i]));
+		ft_free(&tab[fd], ft_gnldup(""));
 		tab[fd] = tmp2;
 	}
 	else
-		ft_free(&tab[fd], ft_strdup(""));
+		ft_free(&tab[fd], ft_gnldup(""));
 	return (tmp);
 }
 
