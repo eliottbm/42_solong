@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 13:37:52 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/24 14:29:48 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:05:57 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+
+char	*ft_get_next_line(int fd);
 
 int		ft_isalpha(int c);
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_get_next_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 10:02:04 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/24 14:29:18 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:05:41 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	ft_free(char **str, char *buff)
 	return (1);
 }
 
-static char	*trim_line(char **tab, int fd)
+static char	*ft_trim_line(char **tab, int fd)
 {
 	char	*tmp;
 	char	*tmp2;
@@ -72,7 +72,7 @@ static char	*trim_line(char **tab, int fd)
 	return (tmp);
 }
 
-static int	read_line(char **tab, int fd)
+static int	ft_read_line(char **tab, int fd)
 {
 	char	*buff;
 	int		rbytes;
@@ -98,16 +98,16 @@ static int	read_line(char **tab, int fd)
 	return (0);
 }
 
-char	*get_next_line(int fd)
+char	*ft_get_next_line(int fd)
 {
 	static char	*tab[1024];
 	char		*str;
 
 	if (fd < 0 || fd > 1024 || GNL_BUFFER_SIZE < 0)
 		return (NULL);
-	if (read_line(tab, fd))
+	if (ft_read_line(tab, fd))
 		return (NULL);
-	str = trim_line(tab, fd);
+	str = ft_trim_line(tab, fd);
 	if (!str)
 		return (NULL);
 	return (str);
