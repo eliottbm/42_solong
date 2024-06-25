@@ -6,13 +6,13 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:39:13 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/05/30 16:46:39 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/06/25 15:03:21 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+int	ft_lstsize(t_collec *lst)
 {
 	int	i;
 

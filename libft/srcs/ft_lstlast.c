@@ -6,13 +6,13 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 13:45:33 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/05/30 14:00:32 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/06/25 15:03:21 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+t_collec	*ft_lstlast(t_collec *lst)
 {
 	if (!lst)
 		return (NULL);
