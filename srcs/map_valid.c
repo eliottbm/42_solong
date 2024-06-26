@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:17:29 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/26 15:45:14 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:47:12 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ char	**clonemap(char **map)
 	while (map[i])
 	{
 		tmpmap[i] = ft_strdup(map[i]);
-		ft_printf("%s\n", tmpmap[i]);
 		i++;
 	}
 	tmpmap[i] = NULL;
@@ -84,12 +83,5 @@ int	ismapvalid(char **map, t_data *gamedata)
 		return (1);
 	if (testmap(tmpmap, tmpgamedata, tmpgamedata->xp, tmpgamedata->yp))
 		return (ft_putstr_fd("Error map cant be finished", 2), 1);
-	ft_printf("=====\n");
-	int i = 0;
-	while (tmpmap[i])
-	{
-		ft_printf("%s\n", tmpmap[i]);
-		i++;
-	}
 	return (0);
 }
