@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:46:43 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/26 12:04:39 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:08:10 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,22 @@ typedef struct s_data
 	int			ye;
 	int			ce;
 	int			ise;
-	t_collec	*collecs;	
+	t_collec	*collecs;
+	int			ccollecs;
 }				t_data;
 
 t_data	*getmapdata(char **map);
 
 char	**makemap(int fd);
 
+char	**clonemap(char **map);
+
 int		checkmap(char **map);
 
 int		getlinedata(char *line, int y, t_data *gamedata, t_collec **clist);
 
 int		checkmapdata(t_data *gamedata);
+
+int		ismapvalid(char **map, t_data *gamedata);
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_map_data.c                                     :+:      :+:    :+:   */
+/*   map_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:55:31 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/26 12:04:48 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:11:07 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	checkmapdata(t_data *gamedata)
 		return (ft_putstr_fd("Error missing exit", 2), 1);
 	else if (gamedata->ce > 1)
 		return (ft_putstr_fd("Error too many exits", 2), 1);
-	else if (!gamedata->collecs)
+	else if (gamedata->ccollecs == 0)
 		return (ft_putstr_fd("Error missing collectibles", 2), 1);
 	return (0);
 }
@@ -81,11 +81,13 @@ t_data	*getmapdata(char **map)
 	while (map[y])
 	{
 		if (!(y == 0 || !map[y + 1]))
-			getlinedata(map[y], y, gamedata, &colleclist);
+			if (getlinedata(map[y], y, gamedata, &colleclist))
+				return (free(gamedata), NULL);
 		y++;
 	}
 	gamedata->collecs = colleclist;
+	gamedata->ccollecs = ft_lstsize(colleclist);
 	if (checkmapdata(gamedata))
-		return (NULL);
+		return (free(gamedata), NULL);
 	return (gamedata);
 }
