@@ -6,11 +6,11 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:50:51 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/27 12:30:01 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/06/27 16:36:09 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/solong.h"
+#include "../incs/so_long.h"
 
 int	processmap(int fd, char ***map, t_data **gamedata)
 {

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solong.h                                           :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:46:43 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/27 15:36:42 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/06/27 16:58:08 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SOLONG_H
+#ifndef SO_LONG_H
 
-# define SOLONG_H
+# define SO_LONG_H
 
 # include <fcntl.h>
 # include "../libft/incs/libft.h"
@@ -45,6 +45,8 @@ char	**clonemap(char **map);
 void	ft_freemain(char **map, t_data *gamedata);
 
 void	ft_freemlx(t_mlx *mlxdata);
+
+void	ft_printmap(char **map);
 
 int		checkmap(char **map);
 

@@ -6,13 +6,13 @@
 #    By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/13 11:16:00 by ebengtss          #+#    #+#              #
-#    Updated: 2024/06/27 14:42:24 by ebengtss         ###   ########.fr        #
+#    Updated: 2024/06/27 16:35:11 by ebengtss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 MAKEFLAGS 		+=	--no-print-directory
 
-NAME			=	solong.out
+NAME			=	so_long
 
 LIBFT			=	libft
 LIBMLX			=	libmlx

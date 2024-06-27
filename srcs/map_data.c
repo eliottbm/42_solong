@@ -6,11 +6,11 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:55:31 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/27 12:33:21 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/06/27 16:36:09 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/solong.h"
+#include "../incs/so_long.h"
 
 int	checkmapdata(t_data *gamedata)
 {
