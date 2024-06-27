@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:46:43 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/26 15:08:10 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/06/27 11:51:26 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ char	**makemap(int fd);
 
 char	**clonemap(char **map);
 
+void	ft_freemain(char **map, t_data *gamedata);
+
 int		checkmap(char **map);
 
 int		getlinedata(char *line, int y, t_data *gamedata, t_collec **clist);
@@ -43,5 +45,7 @@ int		getlinedata(char *line, int y, t_data *gamedata, t_collec **clist);
 int		checkmapdata(t_data *gamedata);
 
 int		ismapvalid(char **map, t_data *gamedata);
+
+int		processmap(int fd, char ***map, t_data **gamedata);
 
 #endif

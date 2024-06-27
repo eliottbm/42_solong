@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 13:37:52 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/26 10:48:27 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/06/27 11:20:26 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void		ft_lstadd_back(t_collec **lst, t_collec *new);
 
 void		ft_lstdelone(t_collec *lst, void (*del)(int x, int y));
 
-void		ft_lstclear(t_collec **lst, void (*del)(int x, int y));
+void		ft_lstclear(t_collec **lst);
 
 void		ft_lstiter(t_collec *lst, void (*f)(int x, int y));
 

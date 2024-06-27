@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:55:31 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/26 15:11:07 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/06/27 12:33:21 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,6 @@ t_data	*getmapdata(char **map)
 	gamedata->collecs = colleclist;
 	gamedata->ccollecs = ft_lstsize(colleclist);
 	if (checkmapdata(gamedata))
-		return (free(gamedata), NULL);
+		return (ft_lstclear(&colleclist), free(gamedata), NULL);
 	return (gamedata);
 }

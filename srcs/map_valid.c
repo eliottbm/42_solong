@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:17:29 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/26 15:47:12 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/06/27 11:51:22 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,12 @@ int	ismapvalid(char **map, t_data *gamedata)
 		return (1);
 	tmpgamedata = clonestruct(gamedata);
 	if (!tmpgamedata)
-		return (1);
+		return (ft_freemain(tmpmap, tmpgamedata), 1);
 	if (testmap(tmpmap, tmpgamedata, tmpgamedata->xp, tmpgamedata->yp))
+	{
+		ft_freemain(tmpmap, tmpgamedata);
 		return (ft_putstr_fd("Error map cant be finished", 2), 1);
+	}
+	ft_freemain(tmpmap, tmpgamedata);
 	return (0);
 }

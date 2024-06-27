@@ -1,16 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:50:51 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/26 11:36:29 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/06/27 12:30:01 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/solong.h"
+
+int	processmap(int fd, char ***map, t_data **gamedata)
+{
+	*map = makemap(fd);
+	if (!(*map))
+		return (ft_putstr_fd("Error creating the map from file", 2), 1);
+	if (checkmap(*map))
+		return (ft_freemain(*map, *gamedata), 1);
+	*gamedata = getmapdata(*map);
+	if (!gamedata)
+		return (ft_freemain(*map, *gamedata), 1);
+	if (ismapvalid(*map, *gamedata))
+		return (ft_freemain(*map, *gamedata), 1);
+	return (0);
+}
 
 int	checkmap(char **map)
 {
@@ -41,31 +56,48 @@ int	checkmap(char **map)
 	return (0);
 }
 
+void	ft_freemakemap(char *buff, char *tmpbuff, char *tmpmap)
+{
+	if (buff)
+	{
+		free(buff);
+		buff = NULL;
+	}
+	if (tmpbuff)
+	{
+		free(tmpbuff);
+		tmpbuff = NULL;
+	}
+	if (tmpmap)
+	{
+		free(tmpmap);
+		tmpmap = NULL;
+	}
+}
+
 char	**makemap(int fd)
 {
+	char	**map;
 	char	*buff;
 	char	*tmpbuff;
 	char	*tmpmap;
-	int		doread;
 
-	doread = 1;
 	tmpbuff = NULL;
 	tmpmap = NULL;
-	while (doread)
+	buff = ft_get_next_line(fd);
+	if (!buff)
+		return (NULL);
+	while (buff)
 	{
-		buff = ft_get_next_line(fd);
-		if (!buff)
-		{
-			doread = 0;
-			break ;
-		}
-		if (tmpmap)
-			tmpbuff = tmpmap;
+		tmpbuff = tmpmap;
 		tmpmap = ft_gnljoin(tmpbuff, buff);
 		if (!tmpmap)
-			return (free(buff), free(tmpbuff), NULL);
-		if (buff)
-			free(buff);
+			return (ft_freemakemap(buff, NULL, NULL), NULL);
+		ft_freemakemap(buff, NULL, NULL);
+		buff = ft_get_next_line(fd);
 	}
-	return (ft_split(tmpmap, '\n'));
+	map = ft_split(tmpmap, '\n');
+	if (!map)
+		return (ft_freemakemap(buff, tmpbuff, tmpmap), NULL);
+	return (ft_freemakemap(buff, NULL, tmpmap), map);
 }
