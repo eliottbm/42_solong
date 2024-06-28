@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 13:37:52 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/28 12:32:32 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/06/28 14:14:35 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 
 typedef struct s_collec
 {
-	int				x_collec;
-	int				y_collec;
+	int				xc;
+	int				yc;
 	struct s_collec	*next;
 }					t_collec;
 

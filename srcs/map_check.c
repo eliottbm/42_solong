@@ -6,22 +6,22 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:50:51 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/28 12:36:20 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/06/28 14:15:06 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
-int	processmap(int fd, t_data *gamedata)
+int	processmap(int fd, t_data *gdata)
 {
-	if (makemap(fd, gamedata))
+	if (makemap(fd, gdata))
 		return (ft_putstr_fd("Error creating the map from file", 2), 1);
-	if (checkmap(gamedata->map))
-		return (ft_freemain(gamedata), 1);
-	if (getmapdata(gamedata))
-		return (ft_freemain(gamedata), 1);
-	if (ismapvalid(gamedata))
-		return (ft_freemain(gamedata), 1);
+	if (checkmap(gdata->map))
+		return (ft_freemain(gdata), 1);
+	if (getmapdata(gdata))
+		return (ft_freemain(gdata), 1);
+	if (ismapvalid(gdata))
+		return (ft_freemain(gdata), 1);
 	return (0);
 }
 
@@ -73,7 +73,7 @@ void	ft_freemakemap(char *buff, char *tmpbuff, char *tmpmap)
 	}
 }
 
-int	makemap(int fd, t_data *gamedata)
+int	makemap(int fd, t_data *gdata)
 {
 	char	*buff;
 	char	*tmpbuff;
@@ -93,8 +93,8 @@ int	makemap(int fd, t_data *gamedata)
 		ft_freemakemap(buff, NULL, NULL);
 		buff = ft_get_next_line(fd);
 	}
-	gamedata->map = ft_split(tmpmap, '\n');
-	if (!gamedata->map)
+	gdata->map = ft_split(tmpmap, '\n');
+	if (!gdata->map)
 		return (ft_freemakemap(buff, tmpbuff, tmpmap), 1);
 	return (ft_freemakemap(buff, NULL, tmpmap), 0);
 }

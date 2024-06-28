@@ -6,82 +6,82 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:55:31 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/28 13:00:42 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/06/28 14:15:06 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
-int	checkmapdata(t_data *gamedata)
+int	checkmapdata(t_data *gdata)
 {
-	if (gamedata->c_player < 1)
+	if (gdata->cp < 1)
 		return (ft_putstr_fd("Error missing player", 2), 1);
-	else if (gamedata->c_player > 1)
+	else if (gdata->cp > 1)
 		return (ft_putstr_fd("Error too many players", 2), 1);
-	else if (gamedata->c_exit < 1)
+	else if (gdata->ce < 1)
 		return (ft_putstr_fd("Error missing exit", 2), 1);
-	else if (gamedata->c_exit > 1)
+	else if (gdata->ce > 1)
 		return (ft_putstr_fd("Error too many exits", 2), 1);
-	else if (gamedata->c_collec < 1)
+	else if (gdata->ccol < 1)
 		return (ft_putstr_fd("Error missing collectibles", 2), 1);
 	return (0);
 }
 
-void	adddata(char c, t_data *gamedata, int x, int y)
+void	adddata(char c, t_data *gdata, int x, int y)
 {
 	if (c == 'P')
 	{
-		gamedata->x_player = x;
-		gamedata->y_player = y;
-		gamedata->c_player += 1;
+		gdata->xp = x;
+		gdata->yp = y;
+		gdata->cp += 1;
 	}
 	else if (c == 'E')
 	{
-		gamedata->x_exit = x;
-		gamedata->y_exit = y;
-		gamedata->c_exit += 1;
+		gdata->xe = x;
+		gdata->ye = y;
+		gdata->ce += 1;
 	}
 }
 
-int	getlinedata(t_data *gamedata, int y)
+int	getlinedata(t_data *gdata, int y)
 {
 	t_collec	*tmpcollec;
 	int			x;
 
 	x = -1;
-	while (gamedata->map[y][++x])
+	while (gdata->map[y][++x])
 	{
-		if (gamedata->map[y][x] == 'P' || gamedata->map[y][x] == 'E')
-			adddata(gamedata->map[y][x], gamedata, x, y);
-		else if (gamedata->map[y][x] == 'C')
+		if (gdata->map[y][x] == 'P' || gdata->map[y][x] == 'E')
+			adddata(gdata->map[y][x], gdata, x, y);
+		else if (gdata->map[y][x] == 'C')
 		{
 			tmpcollec = ft_lstnew(x, y);
 			if (!tmpcollec)
 				return (1);
-			ft_lstadd_back(&(gamedata->l_collec), tmpcollec);
+			ft_lstadd_back(&(gdata->lcol), tmpcollec);
 		}
 	}
 	return (0);
 }
 
-int	getmapdata(t_data *gamedata)
+int	getmapdata(t_data *gdata)
 {
 	int			y;
 
 	y = 0;
-	gamedata->c_player = 0;
-	gamedata->c_exit = 0;
-	gamedata->is_exit = 0;
-	gamedata->l_collec = NULL;
-	while (gamedata->map[y])
+	gdata->cp = 0;
+	gdata->ce = 0;
+	gdata->ise = 0;
+	gdata->lcol = NULL;
+	while (gdata->map[y])
 	{
-		if (!(y == 0 || !gamedata->map[y + 1]))
-			if (getlinedata(gamedata, y))
-				return (ft_freemain(gamedata), 1);
+		if (!(y == 0 || !gdata->map[y + 1]))
+			if (getlinedata(gdata, y))
+				return (ft_freemain(gdata), 1);
 		y++;
 	}
-	gamedata->c_collec = ft_lstsize(gamedata->l_collec);
-	if (checkmapdata(gamedata))
-		return (ft_freemain(gamedata), 1);
+	gdata->ccol = ft_lstsize(gdata->lcol);
+	if (checkmapdata(gdata))
+		return (ft_freemain(gdata), 1);
 	return (0);
 }
