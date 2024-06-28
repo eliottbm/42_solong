@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:46:43 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/28 16:17:07 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/06/28 17:12:30 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,7 @@ int			testmap(t_checkdata *gdata, int x, int y);
 int			isdir(t_data *gdata, char pos);
 
 int			checkfilename(char *str, char *tofind);
+
+int			listen_close(t_data *gdata);
 
 #endif
