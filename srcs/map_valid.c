@@ -6,28 +6,28 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:17:29 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/27 16:36:09 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/06/28 12:47:31 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
-int	testmap(char **map, t_data *gamedata, int x, int y)
+int	testmap(t_tmptrack *tmpdata, int x, int y)
 {
-	if (map[y][x] == '1' || map[y][x] == 'x')
+	if (tmpdata->map[y][x] == '1' || tmpdata->map[y][x] == 'x')
 		return (0);
-	if (map[y][x] == 'E')
-		return (gamedata->ise = 1, 0);
-	if (map[y][x] == 'C')
-		gamedata->ce += 1;
-	if (gamedata->ise == 1 && gamedata->ce == gamedata->ccollecs)
-		return (gamedata->cp = 0);
-	map[y][x] = 'x';
-	testmap(map, gamedata, x + 1, y);
-	testmap(map, gamedata, x - 1, y);
-	testmap(map, gamedata, x, y + 1);
-	testmap(map, gamedata, x, y - 1);
-	return (gamedata->cp);
+	if (tmpdata->map[y][x] == 'E')
+		return (tmpdata->is_exit = 1, 0);
+	if (tmpdata->map[y][x] == 'C')
+		tmpdata->t_collec += 1;
+	if (tmpdata->is_exit == 1 && tmpdata->t_collec == tmpdata->c_collec)
+		return (tmpdata->is_finish = 0);
+	tmpdata->map[y][x] = 'x';
+	testmap(tmpdata, x + 1, y);
+	testmap(tmpdata, x - 1, y);
+	testmap(tmpdata, x, y + 1);
+	testmap(tmpdata, x, y - 1);
+	return (tmpdata->is_finish);
 }
 
 char	**clonemap(char **map)
@@ -51,41 +51,55 @@ char	**clonemap(char **map)
 	return (tmpmap);
 }
 
-t_data	*clonestruct(t_data *gamedata)
+t_tmptrack	*clonestruct(t_data *gamedata)
 {
-	t_data	*tmpgamedata;
+	t_tmptrack	*tmpgamedata;
 
-	tmpgamedata = malloc(sizeof(t_data));
+	tmpgamedata = malloc(sizeof(t_tmptrack));
 	if (!tmpgamedata)
 		return (NULL);
-	tmpgamedata->xp = gamedata->xp;
-	tmpgamedata->yp = gamedata->yp;
-	tmpgamedata->cp = 1;
-	tmpgamedata->xe = gamedata->xe;
-	tmpgamedata->ye = gamedata->ye;
-	tmpgamedata->ce = 0;
-	tmpgamedata->ise = gamedata->ise;
-	tmpgamedata->collecs = NULL;
-	tmpgamedata->ccollecs = gamedata->ccollecs;
+	tmpgamedata->c_collec = gamedata->c_collec;
+	tmpgamedata->t_collec = 0;
+	tmpgamedata->is_exit = 0;
+	tmpgamedata->is_finish = 1;
+	tmpgamedata->map = clonemap(gamedata->map);
+	if (!tmpgamedata->map)
+		return (NULL);
 	return (tmpgamedata);
 }
 
-int	ismapvalid(char **map, t_data *gamedata)
+void	ft_freevalidmap(t_tmptrack *tmpgamedata)
 {
-	char	**tmpmap;
-	t_data	*tmpgamedata;
+	size_t	i;
 
-	tmpmap = clonemap(map);
-	if (!tmpmap)
-		return (1);
+	i = 0;
+	if (tmpgamedata)
+	{
+		if (tmpgamedata->map)
+		{
+			while (tmpgamedata->map[i])
+			{
+				free(tmpgamedata->map[i]);
+				i++;
+			}
+			free(tmpgamedata->map);
+		}
+		free(tmpgamedata);
+	}
+}
+
+int	ismapvalid(t_data *gamedata)
+{
+	t_tmptrack	*tmpgamedata;
+
 	tmpgamedata = clonestruct(gamedata);
 	if (!tmpgamedata)
-		return (ft_freemain(tmpmap, tmpgamedata), 1);
-	if (testmap(tmpmap, tmpgamedata, tmpgamedata->xp, tmpgamedata->yp))
+		return (ft_freevalidmap(tmpgamedata), 1);
+	if (testmap(tmpgamedata, gamedata->x_player, gamedata->y_player))
 	{
-		ft_freemain(tmpmap, tmpgamedata);
+		ft_freevalidmap(tmpgamedata);
 		return (ft_putstr_fd("Error map cant be finished", 2), 1);
 	}
-	ft_freemain(tmpmap, tmpgamedata);
+	ft_freevalidmap(tmpgamedata);
 	return (0);
 }

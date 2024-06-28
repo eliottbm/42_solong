@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 10:40:24 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/25 16:26:35 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/06/28 12:34:07 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ t_collec	*ft_lstnew(int x, int y)
 	newelem = malloc(sizeof(t_collec));
 	if (!newelem)
 		return (NULL);
-	newelem->xc = x;
-	newelem->yc = y;
+	newelem->x_collec = x;
+	newelem->y_collec = y;
 	newelem->next = NULL;
 	return (newelem);
 }

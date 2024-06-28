@@ -6,7 +6,7 @@
 #    By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/24 14:26:10 by ebengtss          #+#    #+#              #
-#    Updated: 2024/06/25 15:19:57 by ebengtss         ###   ########.fr        #
+#    Updated: 2024/06/28 12:33:42 by ebengtss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,11 +34,11 @@ SRCS_FILES		=	ft_isascii.c		ft_isprint.c		ft_strlen.c			\
 					ft_strrchr.c		ft_strncmp.c		ft_substr.c			\
 					ft_strtrim.c		ft_putstr_fd.c		ft_isalpha.c		\
 					ft_isdigit.c		ft_lstadd_back.c	ft_lstadd_front.c	\
-					ft_lstclear.c		ft_lstiter.c		ft_lstsize.c		\
+					ft_lstclear.c		ft_gnl_utils.c		ft_lstsize.c		\
 					ft_lstlast.c		ft_get_next_line.c	ft_lstdelone.c		\
 					ft_lstnew.c			ft_printf.c			ft_putaddress.c		\
 					ft_putchar_len.c	ft_puthex_len.c		ft_putnbr_len.c		\
-					ft_putstr_len.c		ft_putuns_len.c		ft_gnl_utils.c		\
+					ft_putstr_len.c		ft_putuns_len.c
 
 SRCS			=	$(addprefix $(SRCS_DIR), $(SRCS_FILES))
 OBJS			=	$(addprefix $(OBJS_DIR), $(SRCS_FILES:.c=.o))
