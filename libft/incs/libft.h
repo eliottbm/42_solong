@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 13:37:52 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/01 12:01:59 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/01 14:42:39 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ typedef struct s_collec
 typedef struct s_img
 {
 	void			*img;
-	char			*pimg;
 	int				ximg;
 	int				yimg;
 	struct s_img	*next;
@@ -41,7 +40,7 @@ typedef struct s_img
 
 t_collec	*ft_colnew(int x, int y);
 
-t_img		*ft_imgnew(char *path, int x, int y);
+t_img		*ft_imgnew(int x, int y);
 
 t_collec	*ft_collast(t_collec *lst);
 

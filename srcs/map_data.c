@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:55:31 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/01 11:34:17 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/01 15:39:18 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,15 @@ int	getmapdata(t_data *gdata)
 	y = 0;
 	gdata->cp = 0;
 	gdata->ce = 0;
-	gdata->ise = 0;
 	gdata->cm = 0;
-	gdata->lcol = NULL;
 	gdata->hw = 0;
 	gdata->ww = 0;
+	gdata->ise = 0;
+	gdata->hi = 64;
+	gdata->wi = 64;
+	gdata->lcol = NULL;
 	gdata->limg = NULL;
+	gdata->ltex = NULL;
 	while (gdata->map[y])
 	{
 		if (!(y == 0 || !gdata->map[y + 1]))

@@ -6,7 +6,7 @@
 #    By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/13 11:16:00 by ebengtss          #+#    #+#              #
-#    Updated: 2024/06/28 16:30:55 by ebengtss         ###   ########.fr        #
+#    Updated: 2024/07/01 15:36:34 by ebengtss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,11 @@ SRCS_FILES		=	main.c			\
 					map_check.c		\
 					map_valid.c		\
 					map_data.c		\
-					handle_inputs.c
+					handle_inputs.c	\
+					mlx_imgs.c		\
+					mlx_win.c		\
+					mlx_free.c
+					
 
 SRCS			=	$(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
