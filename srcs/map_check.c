@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:50:51 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/28 14:15:06 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/01 11:52:22 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	processmap(int fd, t_data *gdata)
 		return (ft_freemain(gdata), 1);
 	if (ismapvalid(gdata))
 		return (ft_freemain(gdata), 1);
+	gdata->fd = fd;
 	return (0);
 }
 

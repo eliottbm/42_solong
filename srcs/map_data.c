@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:55:31 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/28 14:15:06 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/01 11:34:17 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ int	getlinedata(t_data *gdata, int y)
 			adddata(gdata->map[y][x], gdata, x, y);
 		else if (gdata->map[y][x] == 'C')
 		{
-			tmpcollec = ft_lstnew(x, y);
+			tmpcollec = ft_colnew(x, y);
 			if (!tmpcollec)
 				return (1);
-			ft_lstadd_back(&(gdata->lcol), tmpcollec);
+			ft_coladd_back(&(gdata->lcol), tmpcollec);
 		}
 	}
 	return (0);
@@ -72,7 +72,11 @@ int	getmapdata(t_data *gdata)
 	gdata->cp = 0;
 	gdata->ce = 0;
 	gdata->ise = 0;
+	gdata->cm = 0;
 	gdata->lcol = NULL;
+	gdata->hw = 0;
+	gdata->ww = 0;
+	gdata->limg = NULL;
 	while (gdata->map[y])
 	{
 		if (!(y == 0 || !gdata->map[y + 1]))
@@ -80,7 +84,7 @@ int	getmapdata(t_data *gdata)
 				return (ft_freemain(gdata), 1);
 		y++;
 	}
-	gdata->ccol = ft_lstsize(gdata->lcol);
+	gdata->ccol = ft_colsize(gdata->lcol);
 	if (checkmapdata(gdata))
 		return (ft_freemain(gdata), 1);
 	return (0);

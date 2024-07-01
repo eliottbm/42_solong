@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:17:29 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/28 14:29:06 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/01 11:44:25 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,23 +68,19 @@ t_checkdata	*clonestruct(t_data *gdata)
 	return (tmpgdata);
 }
 
-void	ft_freevalidmap(t_checkdata *tmpgdata)
+void	ft_freemap(char **tmpmap)
 {
 	size_t	i;
 
 	i = 0;
-	if (tmpgdata)
+	if (*tmpmap)
 	{
-		if (tmpgdata->map)
+		while (tmpmap[i])
 		{
-			while (tmpgdata->map[i])
-			{
-				free(tmpgdata->map[i]);
-				i++;
-			}
-			free(tmpgdata->map);
+			free(tmpmap[i]);
+			i++;
 		}
-		free(tmpgdata);
+		free(tmpmap);
 	}
 }
 
@@ -94,12 +90,14 @@ int	ismapvalid(t_data *gdata)
 
 	tmpgdata = clonestruct(gdata);
 	if (!tmpgdata)
-		return (ft_freevalidmap(tmpgdata), 1);
+		return (ft_freemap(tmpgdata->map), 1);
 	if (testmap(tmpgdata, gdata->xp, gdata->yp))
 	{
-		ft_freevalidmap(tmpgdata);
+		ft_freemap(tmpgdata->map);
+		free(tmpgdata);
 		return (ft_putstr_fd("Error map cant be finished", 2), 1);
 	}
-	ft_freevalidmap(tmpgdata);
+	ft_freemap(tmpgdata->map);
+	free(tmpgdata);
 	return (0);
 }

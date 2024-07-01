@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:46:43 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/28 17:12:30 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/01 11:51:07 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 typedef struct s_data
 {
+	int			fd;
 	int			xp;
 	int			yp;
 	int			cp;
@@ -27,11 +28,15 @@ typedef struct s_data
 	int			ye;
 	int			ce;
 	int			ise;
+	int			cm;
 	t_collec	*lcol;
 	int			ccol;
 	char		**map;
 	void		*mlx;
 	void		*win;
+	int			hw;
+	int			ww;
+	t_img		*limg;
 }				t_data;
 
 typedef struct s_checkdata
@@ -49,7 +54,7 @@ char		**clonemap(char **map);
 
 void		ft_freemain(t_data *gdata);
 
-void		ft_freevalidmap(t_checkdata *tmpgdata);
+void		ft_freemap(char **map);
 
 void		ft_freemakemap(char *buff, char *tmpbuff, char *tmpmap);
 
@@ -82,5 +87,7 @@ int			isdir(t_data *gdata, char pos);
 int			checkfilename(char *str, char *tofind);
 
 int			listen_close(t_data *gdata);
+
+int			makewin(t_data	*gdata);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 13:37:52 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/28 14:14:35 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/01 12:01:59 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,22 @@ typedef struct s_collec
 	struct s_collec	*next;
 }					t_collec;
 
-t_collec	*ft_lstnew(int x, int y);
+typedef struct s_img
+{
+	void			*img;
+	char			*pimg;
+	int				ximg;
+	int				yimg;
+	struct s_img	*next;
+}					t_img;
 
-t_collec	*ft_lstlast(t_collec *lst);
+t_collec	*ft_colnew(int x, int y);
+
+t_img		*ft_imgnew(char *path, int x, int y);
+
+t_collec	*ft_collast(t_collec *lst);
+
+t_img		*ft_imglast(t_img *lst);
 
 size_t		ft_strlen(char const *str);
 
@@ -52,13 +65,19 @@ void		ft_putendl_fd(char *s, int fd);
 
 void		ft_putnbr_fd(int n, int fd);
 
-void		ft_lstadd_front(t_collec **lst, t_collec *new);
+void		ft_coladd_front(t_collec **lst, t_collec *new);
 
-void		ft_lstadd_back(t_collec **lst, t_collec *new);
+void		ft_imgadd_front(t_img **lst, t_img *new);
+
+void		ft_coladd_back(t_collec **lst, t_collec *new);
+
+void		ft_imgadd_back(t_img **lst, t_img *new);
 
 void		ft_lstdelone(t_collec *lst, void (*del)(int x, int y));
 
-void		ft_lstclear(t_collec **lst);
+void		ft_colclear(t_collec **lst);
+
+void		ft_imgclear(t_img **lst);
 
 void		ft_putchar_len(char c, int *counter);
 
@@ -132,7 +151,9 @@ int			ft_memcmp(const void *s1, const void *s2, size_t n);
 
 int			ft_atoi(char const *str);
 
-int			ft_lstsize(t_collec *lst);
+int			ft_colsize(t_collec *lst);
+
+int			ft_imgsize(t_img *lst);
 
 int			ft_printf(const char *args, ...);
 

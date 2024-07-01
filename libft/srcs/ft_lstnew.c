@@ -6,13 +6,13 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 10:40:24 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/28 14:14:35 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/01 12:02:54 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_collec	*ft_lstnew(int x, int y)
+t_collec	*ft_colnew(int x, int y)
 {
 	t_collec	*newelem;
 
@@ -21,6 +21,21 @@ t_collec	*ft_lstnew(int x, int y)
 		return (NULL);
 	newelem->xc = x;
 	newelem->yc = y;
+	newelem->next = NULL;
+	return (newelem);
+}
+
+t_img	*ft_imgnew(char *path, int x, int y)
+{
+	t_img	*newelem;
+
+	newelem = malloc(sizeof(t_img));
+	if (!newelem)
+		return (NULL);
+	newelem->img = NULL;
+	newelem->pimg = path;
+	newelem->ximg = x;
+	newelem->yimg = y;
 	newelem->next = NULL;
 	return (newelem);
 }

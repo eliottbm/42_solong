@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 16:29:42 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/28 17:14:07 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/01 10:26:24 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,13 @@ int	listen_inputs(int key, t_data *gdata)
 		gdata->map[gdata->yp][gdata->xp++] = '0';
 	else
 		return (2);
+	gdata->cm += 1;
+	ft_printf("total mooves: %d\n", gdata->cm);
 	if (gdata->map[gdata->yp][gdata->xp] == 'C')
 		takecol(gdata);
 	if (gdata->map[gdata->yp][gdata->xp] == 'E')
 		return (mlx_loop_end(gdata->mlx), 0);
 	gdata->map[gdata->yp][gdata->xp] = 'P';
-	ft_printmap(gdata->map);
 	return (0);
 }
 
