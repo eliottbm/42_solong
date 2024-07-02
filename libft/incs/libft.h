@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 13:37:52 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/01 14:42:39 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/02 12:13:11 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdarg.h>
 # include <stdint.h>
 
-# ifndef GBL_BUFFER_SIZE
+# ifndef GNL_BUFFER_SIZE
 #  define GNL_BUFFER_SIZE 1
 # endif
 

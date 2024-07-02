@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:46:43 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/01 16:00:30 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/02 12:29:57 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,5 +147,7 @@ int			initialize_imgs1(t_data *gdata);
 int			initialize_imgs2(t_data *gdata, t_textures *tltex);
 
 int			initialize_imgs3(t_data *gdata, t_textures *tltex);
+
+int			rangerand(void);
 
 #endif

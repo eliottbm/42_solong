@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:44:36 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/01 16:49:16 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/02 11:37:31 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ int	fillwin(t_data	*gdata, char **tmpmap)
 	int			j;
 	t_img		*tmpimg;
 
-	(void)tmpmap;
-	(void)tmpimg;
 	i = 0;
 	j = 0;
 	if (initialize_imgs1(gdata))
