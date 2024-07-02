@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:46:43 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/02 12:29:57 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/02 16:02:01 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 # define SO_LONG_H
 
+# include <time.h>
 # include <fcntl.h>
 # include "../libft/incs/libft.h"
 # include "../minilibx-linux/mlx.h"
@@ -87,6 +88,8 @@ typedef struct s_data
 	int			ww;
 	int			hi;
 	int			wi;
+	int			lx;
+	int			ly;
 	t_collec	*lcol;
 	t_img		*limg;
 	t_textures	*ltex;
@@ -97,6 +100,8 @@ t_checkdata	*clonestruct(t_data *gdata);
 char		**clonemap(char **map);
 
 void		*xtoi(t_data *gdata, char *file);
+
+void		*playerdir(t_data *gdata, int x, int y);
 
 void		ft_freemain(t_data *gdata);
 
@@ -115,6 +120,10 @@ void		ft_freetexs2(t_data *gdata);
 void		ft_freetexs3(t_data *gdata);
 
 void		ft_freetexs4(t_data *gdata);
+
+void		initdata(t_data *gdata);
+
+void		replaceimg(t_data *gdata, int y, int x, char c);
 
 int			checkmap(char **map);
 
@@ -149,5 +158,9 @@ int			initialize_imgs2(t_data *gdata, t_textures *tltex);
 int			initialize_imgs3(t_data *gdata, t_textures *tltex);
 
 int			rangerand(void);
+
+int			itow(t_data *gdata, void *img, int x, int y);
+
+int			print_mooves(t_data *gdata);
 
 #endif

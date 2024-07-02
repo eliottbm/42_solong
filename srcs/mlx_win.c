@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:44:36 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/02 11:37:31 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/02 13:21:12 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,21 @@ int	itow(t_data *gdata, void *img, int x, int y)
 
 void	putimage2(t_data *gdata, t_img *tmpimg, int i, int j)
 {
+	int	rndm;
+
+	rndm = rangerand();
 	if (gdata->map[i][j] == 'C')
 		tmpimg->img = gdata->ltex->collec;
+	else if (gdata->map[i][j] == '1' && rndm == 1)
+		tmpimg->img = gdata->ltex->mo1;
+	else if (gdata->map[i][j] == '1' && rndm == 2)
+		tmpimg->img = gdata->ltex->mo2;
+	else if (gdata->map[i][j] == '1' && rndm == 3)
+		tmpimg->img = gdata->ltex->mo3;
+	else if (gdata->map[i][j] == '1' && rndm == 4)
+		tmpimg->img = gdata->ltex->mo4;
+	else if (gdata->map[i][j] == '1' && rndm == 5)
+		tmpimg->img = gdata->ltex->mo5;
 	else
 		tmpimg->img = gdata->ltex->mf;
 }
@@ -62,12 +75,12 @@ int	fillwin(t_data	*gdata, char **tmpmap)
 	j = 0;
 	if (initialize_imgs1(gdata))
 		return (1);
-	while(tmpmap[i])
+	while (tmpmap[i])
 	{
 		j = 0;
 		while (tmpmap[i][j])
 		{
-			tmpimg = ft_imgnew((64 * j), (64 * i));
+			tmpimg = ft_imgnew((64 * j), (64 * i), j, i);
 			if (!tmpimg)
 				return (1);
 			putimage1(gdata, tmpimg, i, j);

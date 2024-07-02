@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:50:51 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/01 11:52:22 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/02 13:13:23 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	processmap(int fd, t_data *gdata)
 {
+	srand(time(NULL));
 	if (makemap(fd, gdata))
 		return (ft_putstr_fd("Error creating the map from file", 2), 1);
 	if (checkmap(gdata->map))

@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 10:40:24 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/01 13:00:31 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/02 14:16:23 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_collec	*ft_colnew(int x, int y)
 	return (newelem);
 }
 
-t_img	*ft_imgnew(int x, int y)
+t_img	*ft_imgnew(int xi, int yi, int xm, int ym)
 {
 	t_img	*newelem;
 
@@ -33,8 +33,10 @@ t_img	*ft_imgnew(int x, int y)
 	if (!newelem)
 		return (NULL);
 	newelem->img = NULL;
-	newelem->ximg = x;
-	newelem->yimg = y;
+	newelem->xi = xi;
+	newelem->yi = yi;
+	newelem->xm = xm;
+	newelem->ym = ym;
 	newelem->next = NULL;
 	return (newelem);
 }
