@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 16:29:42 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/02 16:30:36 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/02 16:46:38 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	print_mooves(t_data *gdata)
 		return (1);
 	ft_printf("total mooves: %s\n", mc);
 	itow(gdata, gdata->ltex->mtl, 0, 0);
-	mlx_string_put(gdata->mlx, gdata->win, 16, 32, 1, mc);
+	mlx_string_put(gdata->mlx, gdata->win, 16, 34, 1, mc);
 	free(mc);
 	return (0);
 }
