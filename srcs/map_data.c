@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:55:31 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/03 13:22:02 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/03 14:47:15 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	addennemies(t_data *gdata, t_img *tmpimg, int x, int y)
 	tmpenm = ft_imgnew((64 * x), (64 * y), x, y);
 	if (!tmpenm)
 		return (1);
-	tmpenm->img = tmpimg;
+	tmpenm->img = tmpimg->img;
 	ft_imgadd_back(&(gdata->lenm), tmpenm);
 	return (0);
 }

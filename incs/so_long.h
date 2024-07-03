@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:46:43 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/03 13:20:21 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/03 15:23:57 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,14 @@ void		replaceimg(t_data *gdata, int y, int x, char c);
 void		putimage1(t_data *gdata, t_img *tmpimg, int x, int y);
 
 void		putimage2(t_data *gdata, t_img *tmpimg, int x, int y);
+
+void		replaceenm1(t_data *gdata, t_img *tmpenm, int dir);
+
+void		replaceenm2(t_data *gdata, t_img *tmpenm, int dir);
+
+void		ennemidir1(t_img *tmpenm, t_textures *tmptex, int dir);
+
+void		ennemidir2(t_img *tmpenm, t_textures *tmptex, int dir);
 
 int			addennemies(t_data *gdata, t_img *tmpimg, int x, int y);
 

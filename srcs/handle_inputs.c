@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 16:29:42 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/03 13:26:22 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/03 15:26:09 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,22 @@ void	takecol(t_data *gdata)
 
 void	moove_ennemies(t_data *gdata)
 {
+	t_img	*tmpenm;
+	int		rndm;
 
+	tmpenm = gdata->lenm;
+	while (tmpenm)
+	{
+		rndm = rangerand(1, 4);
+		replaceenm1(gdata, tmpenm, rndm);
+		tmpenm = tmpenm->next;
+	}
 }
 
 int	listen_inputs(int key, t_data *gdata)
 {
+	if (key == 97 || key == 119 || key == 115 || key == 100)
+		moove_ennemies(gdata);
 	if (key == 65307)
 		return (mlx_loop_end(gdata->mlx), 1);
 	if (key == 97 && isdir(gdata, gdata->map[gdata->yp][gdata->xp - 1]))
@@ -79,7 +90,6 @@ int	listen_inputs(int key, t_data *gdata)
 		replaceimg(gdata, gdata->yp, gdata->xp++, '0');
 	else
 		return (2);
-	moove_ennemies(gdata);
 	gdata->cm += 1;
 	if (print_mooves(gdata))
 		return (1);
