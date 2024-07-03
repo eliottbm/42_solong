@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:51:22 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/01 15:54:55 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/03 10:46:20 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,6 @@ void	ft_freetexs2(t_data *gdata)
 		mlx_destroy_image(gdata->mlx, gdata->ltex->e33);
 	if (gdata->ltex->e34)
 		mlx_destroy_image(gdata->mlx, gdata->ltex->e34);
-	if (gdata->ltex->e41)
-		mlx_destroy_image(gdata->mlx, gdata->ltex->e41);
-	if (gdata->ltex->e42)
-		mlx_destroy_image(gdata->mlx, gdata->ltex->e42);
-	if (gdata->ltex->e43)
-		mlx_destroy_image(gdata->mlx, gdata->ltex->e43);
-	if (gdata->ltex->e44)
-		mlx_destroy_image(gdata->mlx, gdata->ltex->e44);
 	if (gdata->ltex->mf)
 		mlx_destroy_image(gdata->mlx, gdata->ltex->mf);
 	ft_freetexs3(gdata);

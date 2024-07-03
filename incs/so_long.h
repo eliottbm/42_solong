@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:46:43 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/02 16:02:01 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/03 11:45:54 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,6 @@ typedef struct s_textures
 	void	*e32;
 	void	*e33;
 	void	*e34;
-	void	*e41;
-	void	*e42;
-	void	*e43;
-	void	*e44;
 	void	*mf;
 	void	*mt;
 	void	*mr;
@@ -125,7 +121,9 @@ void		initdata(t_data *gdata);
 
 void		replaceimg(t_data *gdata, int y, int x, char c);
 
-int			checkmap(char **map);
+int			checkmapchar(char **map);
+
+int			checkmapsize(char **map);
 
 int			makemap(int fd, t_data *gdata);
 

@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:17:29 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/01 11:44:25 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/03 11:37:26 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_checkdata	*clonestruct(t_data *gdata)
 	tmpgdata->isf = 1;
 	tmpgdata->map = clonemap(gdata->map);
 	if (!tmpgdata->map)
-		return (NULL);
+		return (free(tmpgdata), NULL);
 	return (tmpgdata);
 }
 
@@ -90,12 +90,12 @@ int	ismapvalid(t_data *gdata)
 
 	tmpgdata = clonestruct(gdata);
 	if (!tmpgdata)
-		return (ft_freemap(tmpgdata->map), 1);
+		return (ft_putstr_fd("Error\nmap cloning map", 2), 1);
 	if (testmap(tmpgdata, gdata->xp, gdata->yp))
 	{
 		ft_freemap(tmpgdata->map);
 		free(tmpgdata);
-		return (ft_putstr_fd("Error map cant be finished", 2), 1);
+		return (ft_putstr_fd("Error\nmap cant be finished", 2), 1);
 	}
 	ft_freemap(tmpgdata->map);
 	free(tmpgdata);

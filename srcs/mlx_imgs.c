@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:41:44 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/01 16:29:25 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/03 10:46:50 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,11 @@ int	initialize_imgs2(t_data *gdata, t_textures *tltex)
 	tltex->e32 = xtoi(gdata, "./texs/ennemis/e3/e32.xpm");
 	tltex->e33 = xtoi(gdata, "./texs/ennemis/e3/e33.xpm");
 	tltex->e34 = xtoi(gdata, "./texs/ennemis/e3/e34.xpm");
-	tltex->e41 = xtoi(gdata, "./texs/ennemis/e4/e41.xpm");
-	tltex->e42 = xtoi(gdata, "./texs/ennemis/e4/e42.xpm");
-	tltex->e43 = xtoi(gdata, "./texs/ennemis/e4/e43.xpm");
-	tltex->e44 = xtoi(gdata, "./texs/ennemis/e4/e44.xpm");
 	tltex->mf = xtoi(gdata, "./texs/map/mf.xpm");
 	tltex->mt = xtoi(gdata, "./texs/map/mt.xpm");
 	tltex->mr = xtoi(gdata, "./texs/map/mr.xpm");
 	tltex->mb = xtoi(gdata, "./texs/map/mb.xpm");
-	if (!(tltex->e31) || !(tltex->e32) || !(tltex->e34) || !(tltex->e41)
-		|| !(tltex->e42) || !(tltex->e43) || !(tltex->e44) || !(tltex->mf)
+	if (!(tltex->e31) || !(tltex->e32) || !(tltex->e34) || !(tltex->mf)
 		|| !(tltex->mt) || !(tltex->mr) || !(tltex->mb) || !(tltex->e31))
 		return (ft_freetexs1(gdata), 1);
 	initialize_imgs3(gdata, tltex);

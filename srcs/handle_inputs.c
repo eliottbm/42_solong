@@ -6,17 +6,29 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 16:29:42 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/02 16:46:38 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/03 11:48:30 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
 
-int	isdir(t_data *gdata, char pos)
+int	listen_close(t_data *gdata)
 {
-	if (pos == '1' || (pos == 'E' && gdata->ise == 0))
-		return (0);
-	return (1);
+	return (mlx_loop_end(gdata->mlx), 0);
+}
+
+int	print_mooves(t_data *gdata)
+{
+	char	*mc;
+
+	mc = ft_itoa(gdata->cm);
+	if (!mc)
+		return (1);
+	ft_printf("total mooves: %s\n", mc);
+	itow(gdata, gdata->ltex->mtl, 0, 0);
+	mlx_string_put(gdata->mlx, gdata->win, 15, 34, 1, mc);
+	free(mc);
+	return (0);
 }
 
 void	takecol(t_data *gdata)
@@ -46,36 +58,6 @@ void	takecol(t_data *gdata)
 		gdata->lcol = NULL;
 		replaceimg(gdata, -1, -1, 'E');
 	}
-}
-
-void	*playerdir(t_data *gdata, int x, int y)
-{
-	void	*img;
-
-	img = NULL;
-	if (x > gdata->lx)
-		img = gdata->ltex->p2;
-	else if (x < gdata->lx)
-		img = gdata->ltex->p4;
-	else if (y > gdata->ly)
-		img = gdata->ltex->p3;
-	else if (y < gdata->ly)
-		img = gdata->ltex->p1;
-	return (img);
-}
-
-int	print_mooves(t_data *gdata)
-{
-	char	*mc;
-
-	mc = ft_itoa(gdata->cm);
-	if (!mc)
-		return (1);
-	ft_printf("total mooves: %s\n", mc);
-	itow(gdata, gdata->ltex->mtl, 0, 0);
-	mlx_string_put(gdata->mlx, gdata->win, 16, 34, 1, mc);
-	free(mc);
-	return (0);
 }
 
 int	listen_inputs(int key, t_data *gdata)

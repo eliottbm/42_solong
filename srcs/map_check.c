@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:50:51 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/02 13:13:23 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/03 11:45:25 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,44 @@
 int	processmap(int fd, t_data *gdata)
 {
 	srand(time(NULL));
-	if (makemap(fd, gdata))
-		return (ft_putstr_fd("Error creating the map from file", 2), 1);
-	if (checkmap(gdata->map))
-		return (ft_freemain(gdata), 1);
-	if (getmapdata(gdata))
-		return (ft_freemain(gdata), 1);
-	if (ismapvalid(gdata))
-		return (ft_freemain(gdata), 1);
+	initdata(gdata);
 	gdata->fd = fd;
+	if (makemap(fd, gdata))
+		return (ft_putstr_fd("Error\ncreating the map from file", 2), 1);
+	if (checkmapsize(gdata->map))
+		return (1);
+	if (checkmapchar(gdata->map))
+		return (ft_putstr_fd("Error\nmap contain non allowed characters", 2), 1);
+	if (getmapdata(gdata))
+		return (1);
+	if (ismapvalid(gdata))
+		return (1);
 	return (0);
 }
 
-int	checkmap(char **map)
+int	checkmapchar(char **map)
+{
+	size_t	x;
+	size_t	y;
+
+	y = 0;
+	while (map[y])
+	{
+		x = 0;
+		while (map[y][x])
+		{
+			if (map[y][x] != '1' && map[y][x] != '0'
+				&& map[y][x] != 'P' && map[y][x] != 'E'
+				&& map[y][x] != 'C')
+				return (1);
+			x++;
+		}
+		y++;
+	}
+	return (0);
+}
+
+int	checkmapsize(char **map)
 {
 	size_t	tmplen;
 	int		i;
@@ -40,18 +65,18 @@ int	checkmap(char **map)
 		tmplen = ft_strlen(map[i]);
 		if (i > 0)
 			if (tmplen != ft_strlen(map[i - 1]))
-				return (ft_putstr_fd("Error map isnt a square", 2), 1);
+				return (ft_putstr_fd("Error\nmap isnt a square", 2), 1);
 		if (i == 0 || !map[i + 1])
 		{
 			while (map[i][j])
 			{
 				if (map[i][j] != '1')
-					return (ft_putstr_fd("Error border is invalid", 2), 1);
+					return (ft_putstr_fd("Error\nborder is invalid", 2), 1);
 				j++;
 			}
 		}
 		else if (map[i][0] != '1' || map[i][ft_strlen(map[i]) - 1] != '1')
-			return (ft_putstr_fd("Error border is invalid", 2), 1);
+			return (ft_putstr_fd("Error\nborder is invalid", 2), 1);
 	}
 	return (0);
 }
