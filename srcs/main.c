@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 15:15:25 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/03 13:25:00 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/03 16:34:44 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,11 @@ void	initdata(t_data *gdata)
 	gdata->lenm = NULL;
 	gdata->mlx = NULL;
 	gdata->win = NULL;
+	gdata->map = NULL;
 }
 
 void	ft_freemain(t_data *gdata)
 {
-	size_t	i;
-
-	i = 0;
 	if (gdata)
 	{
 		if (gdata->map)

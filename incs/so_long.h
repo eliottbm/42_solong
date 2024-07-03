@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:46:43 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/03 15:23:57 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/03 16:26:41 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,13 +138,15 @@ int			addennemies(t_data *gdata, t_img *tmpimg, int x, int y);
 
 int			checkmapchar(char **map);
 
+int			checkmapformat(char **map);
+
 int			checkmapsize(char **map);
 
 int			makemap(int fd, t_data *gdata);
 
 int			getmapdata(t_data *gdata);
 
-int			getlinedata(t_data *gdata, int y);
+int			getlinedata(t_data *gdata, char **tmpmap, int y);
 
 int			checkmapdata(t_data *gdata);
 

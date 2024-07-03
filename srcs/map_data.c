@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:55:31 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/03 14:47:15 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/03 16:41:45 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,17 @@ int	addennemies(t_data *gdata, t_img *tmpimg, int x, int y)
 	return (0);
 }
 
-int	getlinedata(t_data *gdata, int y)
+int	getlinedata(t_data *gdata, char **tmpmap, int y)
 {
 	t_collec	*tmpcollec;
 	int			x;
 
 	x = 0;
-	while (gdata->map[y][x])
+	while (tmpmap[y][x])
 	{
-		if (gdata->map[y][x] == 'P' || gdata->map[y][x] == 'E')
-			adddata(gdata->map[y][x], gdata, x, y);
-		else if (gdata->map[y][x] == 'C')
+		if (tmpmap[y][x] == 'P' || tmpmap[y][x] == 'E')
+			adddata(tmpmap[y][x], gdata, x, y);
+		else if (tmpmap[y][x] == 'C')
 		{
 			tmpcollec = ft_colnew(x, y);
 			if (!tmpcollec)
@@ -79,18 +79,20 @@ int	getlinedata(t_data *gdata, int y)
 
 int	getmapdata(t_data *gdata)
 {
+	char		**tmpmap;
 	int			y;
 
+	tmpmap = gdata->map;
 	y = 0;
-	while (gdata->map[y])
+	while (tmpmap[y])
 	{
-		if (!(y == 0 || !gdata->map[y + 1]))
-			if (getlinedata(gdata, y))
-				return (ft_freemain(gdata), 1);
+		if (!(y == 0 || !tmpmap[y + 1]))
+			if (getlinedata(gdata, tmpmap, y))
+				return (1);
 		y++;
 	}
 	gdata->ccol = ft_colsize(gdata->lcol);
 	if (checkmapdata(gdata))
-		return (ft_freemain(gdata), 1);
+		return (1);
 	return (0);
 }

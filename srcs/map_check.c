@@ -5,30 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/26 10:50:51 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/03 12:05:51 by ebengtss         ###   ########.fr       */
+/*   Created: 2024/07/03 16:05:25 by ebengtss          #+#    #+#             */
+/*   Updated: 2024/07/03 16:12:04 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
-
-int	processmap(int fd, t_data *gdata)
-{
-	srand(time(NULL));
-	initdata(gdata);
-	gdata->fd = fd;
-	if (makemap(fd, gdata))
-		return (ft_putstr_fd("Error\ncreating the map from file", 2), 1);
-	if (checkmapsize(gdata->map))
-		return (1);
-	if (checkmapchar(gdata->map))
-		return (ft_putstr_fd("Error\nmap contain non allowed characters", 2), 1);
-	if (getmapdata(gdata))
-		return (1);
-	if (ismapvalid(gdata))
-		return (1);
-	return (0);
-}
 
 int	checkmapchar(char **map)
 {
@@ -53,6 +35,20 @@ int	checkmapchar(char **map)
 }
 
 int	checkmapsize(char **map)
+{
+	char	**tmpmap;
+	size_t	i;
+
+	tmpmap = map;
+	i = 1;
+	while (tmpmap[i])
+		i++;
+	if ((i * 64) > 1080)
+		return (ft_putstr_fd("Error\nmap too large\n", 2), 1);
+	return (0);
+}
+
+int	checkmapformat(char **map)
 {
 	size_t	tmplen;
 	int		i;
@@ -79,49 +75,4 @@ int	checkmapsize(char **map)
 			return (ft_putstr_fd("Error\nborder is invalid\n", 2), 1);
 	}
 	return (0);
-}
-
-void	ft_freemakemap(char *buff, char *tmpbuff, char *tmpmap)
-{
-	if (buff)
-	{
-		free(buff);
-		buff = NULL;
-	}
-	if (tmpbuff)
-	{
-		free(tmpbuff);
-		tmpbuff = NULL;
-	}
-	if (tmpmap)
-	{
-		free(tmpmap);
-		tmpmap = NULL;
-	}
-}
-
-int	makemap(int fd, t_data *gdata)
-{
-	char	*buff;
-	char	*tmpbuff;
-	char	*tmpmap;
-
-	tmpbuff = NULL;
-	tmpmap = NULL;
-	buff = ft_get_next_line(fd);
-	if (!buff)
-		return (1);
-	while (buff)
-	{
-		tmpbuff = tmpmap;
-		tmpmap = ft_gnljoin(tmpbuff, buff);
-		if (!tmpmap)
-			return (ft_freemakemap(buff, NULL, NULL), 1);
-		ft_freemakemap(buff, NULL, NULL);
-		buff = ft_get_next_line(fd);
-	}
-	gdata->map = ft_split(tmpmap, '\n');
-	if (!gdata->map)
-		return (ft_freemakemap(buff, tmpbuff, tmpmap), 1);
-	return (ft_freemakemap(buff, NULL, tmpmap), 0);
 }

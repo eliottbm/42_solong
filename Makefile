@@ -6,7 +6,7 @@
 #    By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/13 11:16:00 by ebengtss          #+#    #+#              #
-#    Updated: 2024/07/03 11:48:47 by ebengtss         ###   ########.fr        #
+#    Updated: 2024/07/03 16:06:41 by ebengtss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ INCS_DIR		=	incs
 
 SRCS_FILES		=	main.c			\
 					map_check.c		\
+					map_make.c		\
 					map_valid.c		\
 					map_data.c		\
 					handle_inputs.c	\
