@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 16:05:25 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/03 16:12:04 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/03 16:57:50 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	checkmapformat(char **map)
 		tmplen = ft_strlen(map[i]);
 		if (i > 0)
 			if (tmplen != ft_strlen(map[i - 1]))
-				return (ft_putstr_fd("Error\nmap isnt a square\n", 2), 1);
+				return (ft_putstr_fd("Error\nmap lines not same length\n", 2), 1);
 		if (i == 0 || !map[i + 1])
 		{
 			while (map[i][j])

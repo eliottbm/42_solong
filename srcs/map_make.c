@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:50:51 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/03 16:17:43 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/03 16:58:06 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	processmap(int fd, t_data *gdata)
 	if (checkmapformat(gdata->map))
 		return (1);
 	if (checkmapchar(gdata->map))
-		return (ft_putstr_fd("Error\nmap contain non allowed characters\n", 2), 1);
+		return (ft_putstr_fd("Error\nnon allowed characters\n", 2), 1);
 	if (getmapdata(gdata))
 		return (1);
 	if (ismapvalid(gdata))
