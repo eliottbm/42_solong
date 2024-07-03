@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:55:31 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/03 11:55:23 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/03 13:22:02 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,18 @@ void	adddata(char c, t_data *gdata, int x, int y)
 	}
 }
 
+int	addennemies(t_data *gdata, t_img *tmpimg, int x, int y)
+{
+	t_img		*tmpenm;
+
+	tmpenm = ft_imgnew((64 * x), (64 * y), x, y);
+	if (!tmpenm)
+		return (1);
+	tmpenm->img = tmpimg;
+	ft_imgadd_back(&(gdata->lenm), tmpenm);
+	return (0);
+}
+
 int	getlinedata(t_data *gdata, int y)
 {
 	t_collec	*tmpcollec;
@@ -63,26 +75,6 @@ int	getlinedata(t_data *gdata, int y)
 		x++;
 	}
 	return (0);
-}
-
-void	initdata(t_data *gdata)
-{
-	gdata->cp = 0;
-	gdata->ce = 0;
-	gdata->cm = 0;
-	gdata->ccol = 0;
-	gdata->ise = 0;
-	gdata->hw = 0;
-	gdata->ww = 0;
-	gdata->hi = 64;
-	gdata->wi = 64;
-	gdata->lx = 0;
-	gdata->ly = 0;
-	gdata->lcol = NULL;
-	gdata->limg = NULL;
-	gdata->ltex = NULL;
-	gdata->mlx = NULL;
-	gdata->win = NULL;
 }
 
 int	getmapdata(t_data *gdata)

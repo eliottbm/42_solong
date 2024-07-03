@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:46:43 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/03 11:45:54 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/03 13:20:21 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ typedef struct s_data
 	int			ly;
 	t_collec	*lcol;
 	t_img		*limg;
+	t_img		*lenm;
 	t_textures	*ltex;
 }				t_data;
 
@@ -120,6 +121,12 @@ void		ft_freetexs4(t_data *gdata);
 void		initdata(t_data *gdata);
 
 void		replaceimg(t_data *gdata, int y, int x, char c);
+
+void		putimage1(t_data *gdata, t_img *tmpimg, int x, int y);
+
+void		putimage2(t_data *gdata, t_img *tmpimg, int x, int y);
+
+int			addennemies(t_data *gdata, t_img *tmpimg, int x, int y);
 
 int			checkmapchar(char **map);
 
@@ -155,7 +162,7 @@ int			initialize_imgs2(t_data *gdata, t_textures *tltex);
 
 int			initialize_imgs3(t_data *gdata, t_textures *tltex);
 
-int			rangerand(void);
+int			rangerand(int min, int max);
 
 int			itow(t_data *gdata, void *img, int x, int y);
 

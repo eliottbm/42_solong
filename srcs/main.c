@@ -6,11 +6,32 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 15:15:25 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/03 11:54:50 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/03 13:25:00 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/so_long.h"
+
+void	initdata(t_data *gdata)
+{
+	gdata->cp = 0;
+	gdata->ce = 0;
+	gdata->cm = 0;
+	gdata->ccol = 0;
+	gdata->ise = 0;
+	gdata->hw = 0;
+	gdata->ww = 0;
+	gdata->hi = 64;
+	gdata->wi = 64;
+	gdata->lx = 0;
+	gdata->ly = 0;
+	gdata->lcol = NULL;
+	gdata->limg = NULL;
+	gdata->ltex = NULL;
+	gdata->lenm = NULL;
+	gdata->mlx = NULL;
+	gdata->win = NULL;
+}
 
 void	ft_freemain(t_data *gdata)
 {
@@ -25,6 +46,8 @@ void	ft_freemain(t_data *gdata)
 			ft_colclear(&(gdata->lcol));
 		if (gdata->limg)
 			ft_imgclear(&(gdata->limg));
+		if (gdata->lenm)
+			ft_imgclear(&(gdata->lenm));
 		if (gdata->ltex)
 			ft_freetexs1(gdata);
 		if (gdata->mlx && gdata->win)
@@ -60,9 +83,9 @@ int	checkfilename(char *str, char *tofind)
 	return (1);
 }
 
-int	rangerand(void)
+int	rangerand(int min, int max)
 {
-	return (rand() % ((5 + 1) - 1) + 1);
+	return ((rand() % (max - min + 1)) + min);
 }
 
 int	main(int argc, char **argv)

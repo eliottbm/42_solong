@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:50:51 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/03 11:55:05 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/03 12:05:51 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	checkmapchar(char **map)
 		{
 			if (map[y][x] != '1' && map[y][x] != '0'
 				&& map[y][x] != 'P' && map[y][x] != 'E'
-				&& map[y][x] != 'C')
+				&& map[y][x] != 'C' && map[y][x] != 'D')
 				return (1);
 			x++;
 		}
