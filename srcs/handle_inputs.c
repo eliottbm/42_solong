@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 16:29:42 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/03 11:48:30 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/03 11:57:54 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	listen_close(t_data *gdata)
 {
+	ft_printf("so_long exited\n");
 	return (mlx_loop_end(gdata->mlx), 0);
 }
 
@@ -63,7 +64,7 @@ void	takecol(t_data *gdata)
 int	listen_inputs(int key, t_data *gdata)
 {
 	if (key == 65307)
-		return (mlx_loop_end(gdata->mlx), 1);
+		return (ft_printf("so_long exited\n"), mlx_loop_end(gdata->mlx), 1);
 	if (key == 97 && isdir(gdata, gdata->map[gdata->yp][gdata->xp - 1]))
 		replaceimg(gdata, gdata->yp, gdata->xp--, '0');
 	else if (key == 119 && isdir(gdata, gdata->map[gdata->yp - 1][gdata->xp]))
@@ -80,7 +81,7 @@ int	listen_inputs(int key, t_data *gdata)
 	if (gdata->map[gdata->yp][gdata->xp] == 'C')
 		takecol(gdata);
 	if (gdata->map[gdata->yp][gdata->xp] == 'E')
-		return (mlx_loop_end(gdata->mlx), 0);
+		return (ft_printf("you won !\n"), mlx_loop_end(gdata->mlx), 0);
 	replaceimg(gdata, gdata->yp, gdata->xp, 'P');
 	return (0);
 }

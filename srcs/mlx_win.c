@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:44:36 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/03 11:36:10 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/03 11:56:03 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	makewin(t_data	*gdata)
 
 	tmpmap = clonemap(gdata->map);
 	if (!tmpmap)
-		return (ft_putstr_fd("Error\nmaking the window", 2), 1);
+		return (ft_putstr_fd("Error\nmaking the window\n", 2), 1);
 	hmap = 0;
 	wmap = (int)ft_strlen(tmpmap[hmap]);
 	while (tmpmap[hmap])
@@ -112,7 +112,7 @@ int	makewin(t_data	*gdata)
 	if (fillwin(gdata, tmpmap))
 	{
 		ft_freemap(tmpmap);
-		ft_putstr_fd("Error\ndisplaying the images", 2);
+		ft_putstr_fd("Error\ndisplaying the images\n", 2);
 		return (1);
 	}
 	ft_freemap(tmpmap);

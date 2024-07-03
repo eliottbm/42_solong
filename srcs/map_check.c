@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:50:51 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/03 11:45:25 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/03 11:55:05 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,18 +65,18 @@ int	checkmapsize(char **map)
 		tmplen = ft_strlen(map[i]);
 		if (i > 0)
 			if (tmplen != ft_strlen(map[i - 1]))
-				return (ft_putstr_fd("Error\nmap isnt a square", 2), 1);
+				return (ft_putstr_fd("Error\nmap isnt a square\n", 2), 1);
 		if (i == 0 || !map[i + 1])
 		{
 			while (map[i][j])
 			{
 				if (map[i][j] != '1')
-					return (ft_putstr_fd("Error\nborder is invalid", 2), 1);
+					return (ft_putstr_fd("Error\nborder is invalid\n", 2), 1);
 				j++;
 			}
 		}
 		else if (map[i][0] != '1' || map[i][ft_strlen(map[i]) - 1] != '1')
-			return (ft_putstr_fd("Error\nborder is invalid", 2), 1);
+			return (ft_putstr_fd("Error\nborder is invalid\n", 2), 1);
 	}
 	return (0);
 }

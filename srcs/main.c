@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 15:15:25 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/03 11:48:24 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/03 11:54:50 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,12 @@ int	main(int argc, char **argv)
 	t_data	*gdata;
 
 	if (argc != 2)
-		return (ft_putstr_fd("Error\nwrong args", 2), 1);
+		return (ft_putstr_fd("Error\nwrong args\n", 2), 1);
 	if (checkfilename(argv[1], ".ber"))
-		return (ft_putstr_fd("Error\nmap wrong extension", 2), 1);
+		return (ft_putstr_fd("Error\nmap wrong extension\n", 2), 1);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		return (ft_putstr_fd("Error\nopening the map file", 2), 1);
+		return (ft_putstr_fd("Error\nopening the map file\n", 2), 1);
 	gdata = malloc(sizeof(t_data));
 	if (!gdata)
 		return (1);

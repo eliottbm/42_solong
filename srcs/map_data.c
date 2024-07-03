@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:55:31 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/03 11:36:10 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/03 11:55:23 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 int	checkmapdata(t_data *gdata)
 {
 	if (gdata->cp < 1)
-		return (ft_putstr_fd("Error\nmissing player", 2), 1);
+		return (ft_putstr_fd("Error\nmissing player\n", 2), 1);
 	else if (gdata->cp > 1)
-		return (ft_putstr_fd("Error\ntoo many players", 2), 1);
+		return (ft_putstr_fd("Error\ntoo many players\n", 2), 1);
 	else if (gdata->ce < 1)
-		return (ft_putstr_fd("Error\nmissing exit", 2), 1);
+		return (ft_putstr_fd("Error\nmissing exit\n", 2), 1);
 	else if (gdata->ce > 1)
-		return (ft_putstr_fd("Error\ntoo many exits", 2), 1);
+		return (ft_putstr_fd("Error\ntoo many exits\n", 2), 1);
 	else if (gdata->ccol < 1)
-		return (ft_putstr_fd("Error\nmissing collectibles", 2), 1);
+		return (ft_putstr_fd("Error\nmissing collectibles\n", 2), 1);
 	return (0);
 }
 
