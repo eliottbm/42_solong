@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_inputs.c                                    :+:      :+:    :+:   */
+/*   handle_inputs_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 16:29:42 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/04 14:38:39 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/04 15:13:57 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/so_long.h"
+#include "../incs_bonus/so_long_bonus.h"
 
 int	listen_close(t_data *gdata)
 {
 	return (mlx_loop_end(gdata->mlx), 0);
+}
+
+int	print_mooves(t_data *gdata)
+{
+	char	*mc;
+
+	mc = ft_itoa(gdata->cm);
+	if (!mc)
+		return (1);
+	itow(gdata, gdata->ltex->mtl, 0, 0);
+	mlx_string_put(gdata->mlx, gdata->win, 15, 34, 1, mc);
+	free(mc);
+	return (0);
 }
 
 void	takecol(t_data *gdata)
@@ -46,8 +59,24 @@ void	takecol(t_data *gdata)
 	}
 }
 
+void	moove_ennemies(t_data *gdata)
+{
+	t_img	*tmpenm;
+	int		rndm;
+
+	tmpenm = gdata->lenm;
+	while (tmpenm)
+	{
+		rndm = rangerand(1, 4);
+		replaceenm1(gdata, tmpenm, rndm);
+		tmpenm = tmpenm->next;
+	}
+}
+
 int	listen_inputs(int key, t_data *gdata)
 {
+	if (key == 97 || key == 119 || key == 115 || key == 100)
+		moove_ennemies(gdata);
 	if (key == 65307)
 		return (mlx_loop_end(gdata->mlx), 1);
 	if (key == 97 && isdir(gdata, gdata->map[gdata->yp][gdata->xp - 1]))
@@ -61,7 +90,10 @@ int	listen_inputs(int key, t_data *gdata)
 	else
 		return (2);
 	gdata->cm += 1;
-	ft_printf("total mooves: %d\n", gdata->cm);
+	if (print_mooves(gdata))
+		return (1);
+	if (gdata->map[gdata->yp][gdata->xp] == 'D')
+		return (ft_printf("you lost\n"), mlx_loop_end(gdata->mlx), 1);
 	if (gdata->map[gdata->yp][gdata->xp] == 'C')
 		takecol(gdata);
 	if (gdata->map[gdata->yp][gdata->xp] == 'E')

@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:46:43 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/04 14:42:42 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/04 14:42:27 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
+#ifndef SO_LONG_BONUS_H
 
-# define SO_LONG_H
+# define SO_LONG_BONUS_H
 
+# include <time.h>
 # include <fcntl.h>
 # include "../libft/incs/libft.h"
 # include "../minilibx-linux/mlx.h"
@@ -22,6 +23,21 @@ typedef struct s_textures
 {
 	void	*collec;
 	void	*p1;
+	void	*p2;
+	void	*p3;
+	void	*p4;
+	void	*e11;
+	void	*e12;
+	void	*e13;
+	void	*e14;
+	void	*e21;
+	void	*e22;
+	void	*e23;
+	void	*e24;
+	void	*e31;
+	void	*e32;
+	void	*e33;
+	void	*e34;
 	void	*mf;
 	void	*mt;
 	void	*mr;
@@ -34,6 +50,10 @@ typedef struct s_textures
 	void	*me1;
 	void	*me2;
 	void	*mo1;
+	void	*mo2;
+	void	*mo3;
+	void	*mo4;
+	void	*mo5;
 }			t_textures;
 
 typedef struct s_checkdata
@@ -68,6 +88,7 @@ typedef struct s_data
 	int			ly;
 	t_collec	*lcol;
 	t_img		*limg;
+	t_img		*lenm;
 	t_textures	*ltex;
 }				t_data;
 
@@ -105,6 +126,16 @@ void		putimage1(t_data *gdata, t_img *tmpimg, int x, int y);
 
 void		putimage2(t_data *gdata, t_img *tmpimg, int x, int y);
 
+void		replaceenm1(t_data *gdata, t_img *tmpenm, int dir);
+
+void		replaceenm2(t_data *gdata, t_img *tmpenm, int dir);
+
+void		ennemidir1(t_img *tmpenm, t_textures *tmptex, int dir);
+
+void		ennemidir2(t_img *tmpenm, t_textures *tmptex, int dir);
+
+int			addennemies(t_data *gdata, t_img *tmpimg, int x, int y);
+
 int			checkmapchar(char **map);
 
 int			checkmapformat(char **map);
@@ -141,6 +172,10 @@ int			initialize_imgs2(t_data *gdata, t_textures *tltex);
 
 int			initialize_imgs3(t_data *gdata, t_textures *tltex);
 
+int			rangerand(int min, int max);
+
 int			itow(t_data *gdata, void *img, int x, int y);
+
+int			print_mooves(t_data *gdata);
 
 #endif

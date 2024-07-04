@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_check.c                                        :+:      :+:    :+:   */
+/*   map_check_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 16:05:25 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/04 14:19:13 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/04 15:05:02 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/so_long.h"
+#include "../incs_bonus/so_long_bonus.h"
 
 int	checkmapchar(char **map)
 {
@@ -25,7 +25,7 @@ int	checkmapchar(char **map)
 		{
 			if (map[y][x] != '1' && map[y][x] != '0'
 				&& map[y][x] != 'P' && map[y][x] != 'E'
-				&& map[y][x] != 'C')
+				&& map[y][x] != 'C' && map[y][x] != 'D')
 				return (1);
 			x++;
 		}

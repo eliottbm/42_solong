@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 15:15:25 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/04 14:17:34 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/04 15:04:54 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/so_long.h"
+#include "../incs_bonus/so_long_bonus.h"
 
 void	initdata(t_data *gdata)
 {
@@ -28,6 +28,7 @@ void	initdata(t_data *gdata)
 	gdata->lcol = NULL;
 	gdata->limg = NULL;
 	gdata->ltex = NULL;
+	gdata->lenm = NULL;
 	gdata->mlx = NULL;
 	gdata->win = NULL;
 	gdata->map = NULL;
@@ -43,6 +44,8 @@ void	ft_freemain(t_data *gdata)
 			ft_colclear(&(gdata->lcol));
 		if (gdata->limg)
 			ft_imgclear(&(gdata->limg));
+		if (gdata->lenm)
+			ft_imgclear(&(gdata->lenm));
 		if (gdata->ltex)
 			ft_freetexs1(gdata);
 		if (gdata->mlx && gdata->win)
@@ -76,6 +79,11 @@ int	checkfilename(char *str, char *tofind)
 		i++;
 	}
 	return (1);
+}
+
+int	rangerand(int min, int max)
+{
+	return ((rand() % (max - min + 1)) + min);
 }
 
 int	main(int argc, char **argv)

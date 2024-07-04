@@ -1,16 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_imgs.c                                         :+:      :+:    :+:   */
+/*   map_imgs_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 15:58:11 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/04 14:36:53 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/04 15:05:12 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/so_long.h"
+#include "../incs_bonus/so_long_bonus.h"
+
+void	replaceenm2(t_data *gdata, t_img *tmpenm, int dir)
+{
+	if (dir == 3 && gdata->map[tmpenm->ym + 1][tmpenm->xm] == '0')
+	{
+		tmpenm->yi += 64;
+		tmpenm->ym += 1;
+		ennemidir1(tmpenm, gdata->ltex, dir);
+	}
+	else if (dir == 4 && gdata->map[tmpenm->ym][tmpenm->xm - 1] == '0')
+	{
+		tmpenm->xi -= 64;
+		tmpenm->xm -= 1;
+		ennemidir1(tmpenm, gdata->ltex, dir);
+	}
+}
+
+void	replaceenm1(t_data *gdata, t_img *tmpenm, int dir)
+{
+	gdata->map[tmpenm->ym][tmpenm->xm] = '0';
+	itow(gdata, gdata->ltex->mf, tmpenm->xi, tmpenm->yi);
+	if (dir == 1 && gdata->map[tmpenm->ym - 1][tmpenm->xm] == '0')
+	{
+		tmpenm->yi -= 64;
+		tmpenm->ym -= 1;
+		ennemidir1(tmpenm, gdata->ltex, dir);
+	}
+	else if (dir == 2 && gdata->map[tmpenm->ym][tmpenm->xm + 1] == '0')
+	{
+		tmpenm->xi += 64;
+		tmpenm->xm += 1;
+		ennemidir1(tmpenm, gdata->ltex, dir);
+	}
+	else
+		replaceenm2(gdata, tmpenm, dir);
+	gdata->map[tmpenm->ym][tmpenm->xm] = 'D';
+	itow(gdata, tmpenm->img, tmpenm->xi, tmpenm->yi);
+}
 
 void	replaceimg(t_data *gdata, int y, int x, char c)
 {
@@ -28,7 +66,7 @@ void	replaceimg(t_data *gdata, int y, int x, char c)
 		{
 			gdata->map[y][x] = c;
 			if (c == 'P')
-				tmpimg->img = gdata->ltex->p1;
+				tmpimg->img = playerdir(gdata, x, y);
 			if (c == '0')
 				tmpimg->img = gdata->ltex->mf;
 			gdata->lx = x;

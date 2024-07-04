@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_win.c                                          :+:      :+:    :+:   */
+/*   mlx_win_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:44:36 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/04 14:33:30 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/04 15:05:39 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/so_long.h"
+#include "../incs_bonus/so_long_bonus.h"
 
 int	itow(t_data *gdata, void *img, int x, int y)
 {
@@ -19,8 +19,25 @@ int	itow(t_data *gdata, void *img, int x, int y)
 
 void	putimage2(t_data *gdata, t_img *tmpimg, int x, int y)
 {
-	if (gdata->map[y][x] == '1')
+	int	rndm;
+
+	rndm = rangerand(1, 5);
+	if (gdata->map[y][x] == '1' && rndm == 1)
 		tmpimg->img = gdata->ltex->mo1;
+	else if (gdata->map[y][x] == '1' && rndm == 2)
+		tmpimg->img = gdata->ltex->mo2;
+	else if (gdata->map[y][x] == '1' && rndm == 3)
+		tmpimg->img = gdata->ltex->mo3;
+	else if (gdata->map[y][x] == '1' && rndm == 4)
+		tmpimg->img = gdata->ltex->mo4;
+	else if (gdata->map[y][x] == '1' && rndm == 5)
+		tmpimg->img = gdata->ltex->mo5;
+	else if (gdata->map[y][x] == 'D' && (rndm == 1 || rndm == 2))
+		tmpimg->img = gdata->ltex->e13;
+	else if (gdata->map[y][x] == 'D' && (rndm == 3 || rndm == 4))
+		tmpimg->img = gdata->ltex->e23;
+	else if (gdata->map[y][x] == 'D')
+		tmpimg->img = gdata->ltex->e33;
 	else
 		tmpimg->img = gdata->ltex->mf;
 }
@@ -44,7 +61,7 @@ void	putimage1(t_data *gdata, t_img *tmpimg, int x, int y)
 	else if (!gdata->map[y][x + 1])
 		tmpimg->img = gdata->ltex->mr;
 	else if (gdata->map[y][x] == 'P')
-		tmpimg->img = gdata->ltex->p1;
+		tmpimg->img = gdata->ltex->p3;
 	else if (gdata->map[y][x] == 'E')
 		tmpimg->img = gdata->ltex->me1;
 	else if (gdata->map[y][x] == 'C')
@@ -72,6 +89,9 @@ int	fillwin(t_data	*gdata, char **tmpmap)
 			if (!tmpimg)
 				return (1);
 			putimage1(gdata, tmpimg, x, y);
+			if (tmpmap[y][x] == 'D')
+				if (addennemies(gdata, tmpimg, x, y))
+					return (1);
 			ft_imgadd_back(&(gdata->limg), tmpimg);
 			x++;
 		}

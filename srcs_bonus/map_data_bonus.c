@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_data.c                                         :+:      :+:    :+:   */
+/*   map_data_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:55:31 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/04 14:19:42 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/04 15:05:07 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/so_long.h"
+#include "../incs_bonus/so_long_bonus.h"
 
 int	checkmapdata(t_data *gdata)
 {
@@ -41,6 +41,18 @@ void	adddata(char c, t_data *gdata, int x, int y)
 		gdata->ye = y;
 		gdata->ce += 1;
 	}
+}
+
+int	addennemies(t_data *gdata, t_img *tmpimg, int x, int y)
+{
+	t_img		*tmpenm;
+
+	tmpenm = ft_imgnew((64 * x), (64 * y), x, y);
+	if (!tmpenm)
+		return (1);
+	tmpenm->img = tmpimg->img;
+	ft_imgadd_back(&(gdata->lenm), tmpenm);
+	return (0);
 }
 
 int	getlinedata(t_data *gdata, char **tmpmap, int y)

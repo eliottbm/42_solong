@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_make.c                                         :+:      :+:    :+:   */
+/*   map_make_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:50:51 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/04 14:18:37 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/04 15:05:17 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/so_long.h"
+#include "../incs_bonus/so_long_bonus.h"
 
 int	processmap(int fd, t_data *gdata)
 {
+	srand(time(NULL));
 	initdata(gdata);
 	gdata->fd = fd;
 	if (makemap(fd, gdata))
