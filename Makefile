@@ -6,7 +6,7 @@
 #    By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/13 11:16:00 by ebengtss          #+#    #+#              #
-#    Updated: 2024/07/04 15:11:26 by ebengtss         ###   ########.fr        #
+#    Updated: 2024/07/19 12:49:55 by ebengtss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,8 @@ SRCS_FILES		=	main.c			\
 					mlx_win.c		\
 					mlx_free.c		\
 					map_imgs.c		\
-					handle_dirs.c
+					handle_dirs.c	\
+					so_long_utils.c
 
 SBONUS_FILES	=	main_bonus.c			\
 					map_check_bonus.c		\
@@ -54,7 +55,8 @@ SBONUS_FILES	=	main_bonus.c			\
 					mlx_win_bonus.c			\
 					mlx_free_bonus.c		\
 					map_imgs_bonus.c		\
-					handle_dirs_bonus.c
+					handle_dirs_bonus.c		\
+					so_long_utils_bonus.c
 
 SRCS			=	$(addprefix $(SRCS_DIR), $(SRCS_FILES))
 OBJS			=	$(addprefix $(OBJS_DIR), $(SRCS_FILES:.c=.o))
