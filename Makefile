@@ -6,7 +6,7 @@
 #    By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/13 11:16:00 by ebengtss          #+#    #+#              #
-#    Updated: 2024/07/25 11:20:54 by ebengtss         ###   ########.fr        #
+#    Updated: 2024/07/25 17:45:08 by ebengtss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,23 +64,25 @@ SBONUS			=	$(addprefix $(SBONUS_DIR), $(SBONUS_FILES))
 OBONUS			=	$(addprefix $(OBONUS_DIR), $(SBONUS_FILES:.c=.o))
 
 DEF_COLOR		=	\033[0;39m
-MAGENTA			=	\033[0;95m
 GREEN			=	\033[0;92m
-DEF_WEIGHT		=	\e[0m
-BOLD_WEIGHT		=	\e[1m
+DEF_STYLE		=	\e[0m
+BOLD_OPACITY	=	\e[1m\e[2m
+RESET_LINE		=	\033[A\033[K
 
 OBJSF			=	.objs_exists
 OBJSF_BONUS		=	.objs_bonus_exists
 
 all				:	$(NAME)
 
-$(NAME)			:	$(OBJS) $(LIBMLX_A) $(LIBFT_A)
-	@$(CC) -o $(NAME) $(CFLAGS) $(INCS_DIR) $(OBJS) -L. -lft -L. -lmlx -lX11 -lXext
-	@echo "$(BOLD_WEIGHT)[SOLONG]$(DEF_WEIGHT) make: $(GREEN)OK$(DEF_COLOR)"
+$(NAME)			:	$(LIBMLX_A) $(LIBFT_A) $(OBJS)
+	@echo "$(RESET_LINE)$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	compiling:	$(GREEN) ✔ $(DEF_COLOR)"
+	@$(CC) -o $(NAME) $(CFLAGS) $(INCS_DIR) $(OBJS) $(LIBFT_A) $(LIBMLX_A) -L. -lX11 -lXext
+	@echo "$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	make:		$(GREEN) ✔ $(DEF_COLOR)"
 
-bonus		:	fclean $(OBONUS) $(LIBMLX_A) $(LIBFT_A)
-	@$(CC) -o $(NAME) $(CFLAGS) $(INCS_DIR) $(OBONUS) -L. -lft -L. -lmlx -lX11 -lXext
-	@echo "$(BOLD_WEIGHT)[SOLONG]$(DEF_WEIGHT) bonus: $(GREEN)OK$(DEF_COLOR)"
+bonus		:	fclean $(LIBMLX_A) $(LIBFT_A) $(OBONUS)
+	@echo "$(RESET_LINE)$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	compiling:	$(GREEN) ✔ $(DEF_COLOR)"
+	@$(CC) -o $(NAME) $(CFLAGS) $(INCS_DIR) $(OBONUS) $(LIBFT_A) $(LIBMLX_A) -L. -lX11 -lXext
+	@echo "$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus:		$(GREEN)✔$(DEF_COLOR)"
 
 $(LIBMLX_A)	:
 	@make -C $(LIBMLX_DIR)
@@ -92,16 +94,18 @@ $(LIBFT_A)	:
 
 $(OBJS_DIR)%.o	:	$(SRCS_DIR)%.c | $(OBJSF)
 	@$(CC) $(CFLAGS) $(INCS_DIR) -c $< -o $@
-	@echo "$(BOLD_WEIGHT)[SOLONG]$(DEF_WEIGHT) compiling: $(MAGENTA) $< $(DEF_COLOR)"
+	@echo "$(RESET_LINE)$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	compiling:	$(GREEN) $< $(DEF_COLOR)"
 
 $(OBONUS_DIR)%.o	:	$(SBONUS_DIR)%.c | $(OBJSF_BONUS)
 	@$(CC) $(CFLAGS) $(IBONUS_DIR) -c $< -o $@
-	@echo "$(BOLD_WEIGHT)[SOLONG]$(DEF_WEIGHT) compiling: $(MAGENTA) $< $(DEF_COLOR)"
+	@echo "$(RESET_LINE)$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	compiling:	$(GREEN) $< $(DEF_COLOR)"
 
 $(OBJSF)	:
+	@echo "$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	nothing to do"
 	@mkdir -p $(OBJS_DIR)
 
 $(OBJSF_BONUS)	:
+	@echo "$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	nothing to do"
 	@mkdir -p $(OBONUS_DIR)
 
 clean			:
@@ -110,11 +114,11 @@ clean			:
 	@make clean -C $(LIBMLX_DIR)
 	@make clean -C $(LIBFT)
 	@rm -f $(LIBFT_A) $(LIBMLX_A)
-	@echo "$(BOLD_WEIGHT)[SOLONG]$(DEF_WEIGHT) clean: $(GREEN)OK$(DEF_COLOR)"
+	@echo "$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	clean:		$(GREEN) ✔ $(DEF_COLOR)"
 
 fclean			:	clean
 	@rm -f $(NAME)
-	@echo "$(BOLD_WEIGHT)[SOLONG]$(DEF_WEIGHT) fclean: $(GREEN)OK$(DEF_COLOR)"
+	@echo "$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	fclean:		$(GREEN) ✔ $(DEF_COLOR)"
 
 re				:	fclean all
 

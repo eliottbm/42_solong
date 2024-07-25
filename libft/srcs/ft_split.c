@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:05:06 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/06/25 11:54:26 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/25 17:11:39 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,31 +45,22 @@ static int	count_word(char const *str, char set)
 	return (counter);
 }
 
-static void	ft_initialize_index(int *i, int *j, int *k)
+static int	ft_run_split(char **splitted_str, char const *s, char c)
 {
-	*i = 0;
-	*j = 0;
-	*k = 0;
-}
+	int	i;
+	int	j;
+	int	k;
 
-char	**ft_split(char const *s, char c)
-{
-	char	**splitted_str;
-	int		i;
-	int		j;
-	int		k;
-
-	splitted_str = malloc(sizeof(char *) * (count_word(s, c) + 1));
-	if (!splitted_str)
-		return (NULL);
-	ft_initialize_index(&i, &j, &k);
+	i = 0;
+	j = 0;
+	k = 0;
 	while (s[i])
 	{
 		if (s[i] != c && (s[i + 1] == '\0' || s[i + 1] == c))
 		{
 			splitted_str[k] = malloc(sizeof(char) * (i - j + 2));
 			if (!splitted_str[k])
-				return (ft_free_all(splitted_str));
+				return (ft_free_all(splitted_str), 1);
 			ft_strlcpy(splitted_str[k], &s[j], (i - j + 2));
 			k++;
 		}
@@ -77,5 +68,21 @@ char	**ft_split(char const *s, char c)
 			j = i;
 	}
 	splitted_str[k] = NULL;
+	return (0);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**splitted_str;
+	int		words;
+
+	words = count_word(s, c);
+	if (words == 0)
+		return (NULL);
+	splitted_str = malloc(sizeof(char *) * (words + 1));
+	if (!splitted_str)
+		return (NULL);
+	if (ft_run_split(splitted_str, s, c))
+		return (NULL);
 	return (splitted_str);
 }
