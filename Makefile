@@ -6,7 +6,7 @@
 #    By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/13 11:16:00 by ebengtss          #+#    #+#              #
-#    Updated: 2024/07/19 12:49:55 by ebengtss         ###   ########.fr        #
+#    Updated: 2024/07/25 11:20:54 by ebengtss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,7 @@ $(NAME)			:	$(OBJS) $(LIBMLX_A) $(LIBFT_A)
 
 bonus		:	fclean $(OBONUS) $(LIBMLX_A) $(LIBFT_A)
 	@$(CC) -o $(NAME) $(CFLAGS) $(INCS_DIR) $(OBONUS) -L. -lft -L. -lmlx -lX11 -lXext
-	@echo "$(BOLD_WEIGHT)[SOLONG]$(DEF_WEIGHT) make bonus: $(GREEN)OK$(DEF_COLOR)"
+	@echo "$(BOLD_WEIGHT)[SOLONG]$(DEF_WEIGHT) bonus: $(GREEN)OK$(DEF_COLOR)"
 
 $(LIBMLX_A)	:
 	@make -C $(LIBMLX_DIR)

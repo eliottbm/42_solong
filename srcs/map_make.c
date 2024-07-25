@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:50:51 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/04 14:18:37 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/25 11:15:24 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	processmap(int fd, t_data *gdata)
 	initdata(gdata);
 	gdata->fd = fd;
 	if (makemap(fd, gdata))
-		return (ft_putstr_fd("Error\ncreating the map from file\n", 2), 1);
+		return (1);
 	if (checkmapsize(gdata->map))
 		return (1);
 	if (checkmapformat(gdata->map))
@@ -29,25 +29,6 @@ int	processmap(int fd, t_data *gdata)
 	if (ismapvalid(gdata))
 		return (1);
 	return (0);
-}
-
-void	ft_freemakemap(char *buff, char *tmpbuff, char *tmpmap)
-{
-	if (buff)
-	{
-		free(buff);
-		buff = NULL;
-	}
-	if (tmpbuff)
-	{
-		free(tmpbuff);
-		tmpbuff = NULL;
-	}
-	if (tmpmap)
-	{
-		free(tmpmap);
-		tmpmap = NULL;
-	}
 }
 
 int	makemap(int fd, t_data *gdata)
@@ -68,12 +49,12 @@ int	makemap(int fd, t_data *gdata)
 		tmpbuff = tmpmap;
 		tmpmap = ft_gnljoin(tmpbuff, buff);
 		if (!tmpmap)
-			return (ft_freemakemap(buff, NULL, NULL), 1);
-		ft_freemakemap(buff, NULL, NULL);
+			return (ft_putstr_fd("Error\ncreating the map\n", 2), free(buff), 1);
+		free(buff);
 		buff = ft_get_next_line(fd);
 	}
 	gdata->map = ft_split(tmpmap, '\n');
 	if (!gdata->map)
-		return (ft_freemakemap(buff, tmpbuff, tmpmap), 1);
-	return (ft_freemakemap(buff, NULL, tmpmap), 0);
+		return (ft_putstr_fd("Error\ncreating the map\n", 2), free(tmpmap), 1);
+	return (free(tmpmap), 0);
 }

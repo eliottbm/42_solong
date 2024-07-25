@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:46:43 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/04 14:42:27 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/25 11:04:23 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,6 @@ void		*playerdir(t_data *gdata, int x, int y);
 void		ft_freemain(t_data *gdata);
 
 void		ft_freemap(char **map);
-
-void		ft_freemakemap(char *buff, char *tmpbuff, char *tmpmap);
 
 void		adddata(char c, t_data *gdata, int x, int y);
 
