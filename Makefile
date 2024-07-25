@@ -6,7 +6,7 @@
 #    By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/13 11:16:00 by ebengtss          #+#    #+#              #
-#    Updated: 2024/07/25 17:45:08 by ebengtss         ###   ########.fr        #
+#    Updated: 2024/07/25 17:52:52 by ebengtss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ $(NAME)			:	$(LIBMLX_A) $(LIBFT_A) $(OBJS)
 bonus		:	fclean $(LIBMLX_A) $(LIBFT_A) $(OBONUS)
 	@echo "$(RESET_LINE)$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	compiling:	$(GREEN) ✔ $(DEF_COLOR)"
 	@$(CC) -o $(NAME) $(CFLAGS) $(INCS_DIR) $(OBONUS) $(LIBFT_A) $(LIBMLX_A) -L. -lX11 -lXext
-	@echo "$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus:		$(GREEN)✔$(DEF_COLOR)"
+	@echo "$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus:		$(GREEN) ✔ $(DEF_COLOR)"
 
 $(LIBMLX_A)	:
 	@make -C $(LIBMLX_DIR)
