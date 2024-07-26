@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:17:29 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/04 15:05:23 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/26 11:27:40 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	testmap(t_checkdata *tmpdata, int x, int y)
 	if (tmpdata->map[y][x] == '1' || tmpdata->map[y][x] == 'x')
 		return (0);
 	if (tmpdata->map[y][x] == 'E')
-		return (tmpdata->ise = 1, 0);
+		tmpdata->ise = 1;
 	if (tmpdata->map[y][x] == 'C')
 		tmpdata->mcol += 1;
 	if (tmpdata->ise == 1 && tmpdata->mcol == tmpdata->ccol)

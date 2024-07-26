@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 12:45:57 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/19 12:46:59 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/26 11:20:09 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,10 @@ void	ft_freemain(t_data *gdata)
 			ft_imgclear(&(gdata->limg));
 		if (gdata->ltex)
 			ft_freetexs1(gdata);
-		if (gdata->mlx && gdata->win)
-		{
+		if (gdata->win)
 			mlx_destroy_window(gdata->mlx, gdata->win);
+		if (gdata->mlx)
+		{
 			mlx_destroy_display(gdata->mlx);
 			free(gdata->mlx);
 		}

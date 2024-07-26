@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:50:51 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/25 11:15:24 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/26 11:14:36 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,33 @@ int	processmap(int fd, t_data *gdata)
 	return (0);
 }
 
+int	is_cutted(char *tmpmap)
+{
+	int	i;
+	int	is_space;
+	int	is_before;
+	int	is_after;
+
+	i = 0;
+	is_space = 0;
+	is_before = 0;
+	is_after = 0;
+	while (tmpmap[i])
+	{
+		if (tmpmap[i] != '\n' && is_before == 0)
+			is_before = 1;
+		if (tmpmap[i + 1] && tmpmap[i] == '\n' && tmpmap[i + 1] == '\n'
+			&& is_before == 1)
+			is_space = 1;
+		if (tmpmap[i] != '\n' && is_before == 1 && is_space == 1)
+			is_after = 1;
+		i++;
+	}
+	if (is_space == 1 && is_before == 1 && is_after == 1)
+		return (ft_putstr_fd("Error\nmap cutted\n", 2), 1);
+	return (0);
+}
+
 int	makemap(int fd, t_data *gdata)
 {
 	char	*buff;
@@ -42,8 +69,6 @@ int	makemap(int fd, t_data *gdata)
 	buff = ft_get_next_line(fd);
 	if (!buff)
 		return (ft_putstr_fd("Error\nmap empty\n", 2), 1);
-	if ((ft_strlen(buff) * 64) > 1920)
-		return (free(buff), ft_putstr_fd("Error\nmap too large\n", 2), 1);
 	while (buff)
 	{
 		tmpbuff = tmpmap;
@@ -53,6 +78,8 @@ int	makemap(int fd, t_data *gdata)
 		free(buff);
 		buff = ft_get_next_line(fd);
 	}
+	if (is_cutted(tmpmap))
+		return (free(tmpmap), 1);
 	gdata->map = ft_split(tmpmap, '\n');
 	if (!gdata->map)
 		return (ft_putstr_fd("Error\ncreating the map\n", 2), free(tmpmap), 1);

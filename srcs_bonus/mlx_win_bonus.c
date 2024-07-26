@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 14:44:36 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/04 15:05:39 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/26 13:25:10 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	fillwin(t_data	*gdata, char **tmpmap)
 		{
 			tmpimg = ft_imgnew((64 * x), (64 * y), x, y);
 			if (!tmpimg)
-				return (1);
+				return (ft_putstr_fd("Error\ndisplaying the images\n", 2), 1);
 			putimage1(gdata, tmpimg, x, y);
 			if (tmpmap[y][x] == 'D')
 				if (addennemies(gdata, tmpimg, x, y))
@@ -116,13 +116,13 @@ int	makewin(t_data	*gdata)
 	gdata->hw = hmap * 64;
 	gdata->ww = wmap * 64;
 	gdata->mlx = mlx_init();
+	if (!gdata->mlx)
+		return (ft_putstr_fd("Error\nmissing env\n", 2), ft_freemap(tmpmap), 1);
 	gdata->win = mlx_new_window(gdata->mlx, gdata->ww, gdata->hw, "so_long");
+	if (!gdata->win)
+		return (ft_putstr_fd("Error\nmissing env\n", 2), ft_freemap(tmpmap), 1);
 	if (fillwin(gdata, tmpmap))
-	{
-		ft_freemap(tmpmap);
-		ft_putstr_fd("Error\ndisplaying the images\n", 2);
-		return (1);
-	}
+		return (ft_freemap(tmpmap), 1);
 	ft_freemap(tmpmap);
 	return (0);
 }
