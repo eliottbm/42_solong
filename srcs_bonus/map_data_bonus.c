@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:55:31 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/04 15:05:07 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/26 15:30:31 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	checkmapdata(t_data *gdata)
 	else if (gdata->ce > 1)
 		return (ft_putstr_fd("Error\ntoo many exits\n", 2), 1);
 	else if (gdata->ccol < 1)
-		return (ft_putstr_fd("Error\nmissing collectibles\n", 2), 1);
+		return (ft_putstr_fd("Error\nmissing collectible\n", 2), 1);
 	return (0);
 }
 
