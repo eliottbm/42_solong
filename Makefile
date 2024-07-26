@@ -6,7 +6,7 @@
 #    By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/13 11:16:00 by ebengtss          #+#    #+#              #
-#    Updated: 2024/07/26 17:11:13 by ebengtss         ###   ########.fr        #
+#    Updated: 2024/07/26 18:13:20 by ebengtss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -124,86 +124,86 @@ fclean				:	clean
 
 runtest				:	all
 	@echo "$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	running test ..."
-	@echo "$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)testing non existing $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/not.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)testing invalid border $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/border_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)testing cutted $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/cutted_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)testing empty $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/empty_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)testing wrong extension $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/extension_err.txt
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)testing invalid char $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/invalidchar_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)testing line length $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/line_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)testing missing collectible $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/nocol_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)testing missing exit $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/noexit_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)testing missing player $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/noplayer_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)testing only line jump $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/onlylinejump_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)testing unreachable collectible $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/reachcol_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)testing unreachable exit $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/reachexit_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)testing too large height $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/toolargeheight_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)testing too large width $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/toolargewidth_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)testing too many exit $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/toomanyexit_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)testing too many player $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/toomanyplayer_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)testing without env $(DEF_COLOR)"
-	-env -i valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/working.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)testing working $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/working.ber
+	@echo "$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	testing: $(MAGENTA) non existing $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/not.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	testing: $(MAGENTA) invalid border $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/border_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	testing: $(MAGENTA) cutted $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/cutted_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	testing: $(MAGENTA) empty $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/empty_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	testing: $(MAGENTA) wrong extension $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/extension_err.txt 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	testing: $(MAGENTA) invalid char $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/invalidchar_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	testing: $(MAGENTA) line length $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/line_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	testing: $(MAGENTA) missing collectible $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/nocol_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	testing: $(MAGENTA) missing exit $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/noexit_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	testing: $(MAGENTA) missing player $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/noplayer_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	testing: $(MAGENTA) only line jump $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/onlylinejump_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	testing: $(MAGENTA) unreachable collectible $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/reachcol_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	testing: $(MAGENTA) unreachable exit $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/reachexit_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	testing: $(MAGENTA) too large height $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/toolargeheight_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	testing: $(MAGENTA) too large width $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/toolargewidth_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	testing: $(MAGENTA) too many exit $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/toomanyexit_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	testing: $(MAGENTA) too many player $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/toomanyplayer_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	testing: $(MAGENTA) without env $(DEF_COLOR)"
+	-@env -i valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/working.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	testing: $(MAGENTA) working $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME) maps/working.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
 	@echo "\n"
 
 runtestbonus		:	bonus
 	@echo "$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	running bonus test ..."
-	@echo "$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)bonus testing non existing $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/not.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)bonus testing invalid border $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/border_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)bonus testing cutted $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/cutted_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)bonus testing empty $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/empty_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)bonus testing wrong extension $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/extension_err.txt
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)bonus testing invalid char $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/invalidchar_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)bonus testing line length $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/line_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)bonus testing missing collectible $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/nocol_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)bonus testing missing exit $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/noexit_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)bonus testing missing player $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/noplayer_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)bonus testing only line jump $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/onlylinejump_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)bonus testing unreachable collectible $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/reachcol_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)bonus testing unreachable exit $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/reachexit_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)bonus testing too large height $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/toolargeheight_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)bonus testing too large width $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/toolargewidth_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)bonus testing too many exit $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/toomanyexit_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)bonus testing too many player $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/toomanyplayer_err.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)bonus testing without env $(DEF_COLOR)"
-	-env -i valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/working.ber
-	@echo "\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	$(MAGENTA)bonus testing working $(DEF_COLOR)"
-	-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/working_bonus.ber
+	@echo "$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus testing: $(MAGENTA) non existing $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/not.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus testing: $(MAGENTA) invalid border $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/border_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus testing: $(MAGENTA) cutted $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/cutted_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus testing: $(MAGENTA) empty $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/empty_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus testing: $(MAGENTA) wrong extension $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/extension_err.txt 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus testing: $(MAGENTA) invalid char $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/invalidchar_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus testing: $(MAGENTA) line length $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/line_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus testing: $(MAGENTA) missing collectible $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/nocol_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus testing: $(MAGENTA) missing exit $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/noexit_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus testing: $(MAGENTA) missing player $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/noplayer_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus testing: $(MAGENTA) only line jump $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/onlylinejump_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus testing: $(MAGENTA) unreachable collectible $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/reachcol_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus testing: $(MAGENTA) unreachable exit $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/reachexit_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus testing: $(MAGENTA) too large height $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/toolargeheight_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus testing: $(MAGENTA) too large width $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/toolargewidth_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus testing: $(MAGENTA) too many exit $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/toomanyexit_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus testing: $(MAGENTA) too many player $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/toomanyplayer_err.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus testing: $(MAGENTA) without env $(DEF_COLOR)"
+	-@env -i valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/working.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
+	@echo "\n\n\n$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus testing: $(MAGENTA) working $(DEF_COLOR)"
+	-@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s ./$(NAME_BONUS) maps/working_bonus.ber 2>&1 | grep -e "Error" -A2 -e "HEAP SUMMARY" -e "ERROR SUMMARY"  | sed 's/==[0-9]*== //'
 
 testall				:	runtest runtestbonus
 
