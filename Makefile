@@ -6,7 +6,7 @@
 #    By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/13 11:16:00 by ebengtss          #+#    #+#              #
-#    Updated: 2024/07/26 15:35:40 by ebengtss         ###   ########.fr        #
+#    Updated: 2024/07/26 17:11:13 by ebengtss         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,7 @@ $(NAME)				:	$(LIBMLX_A) $(LIBFT_A) $(OBJS)
 	@echo "$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	make:		$(GREEN) ✔ $(DEF_COLOR)"
 
 $(NAME_BONUS)		:	$(LIBMLX_A) $(LIBFT_A) $(OBJS_BONUS)
-	@echo "$(RESET_LINE)$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	compiling:	$(GREEN) ✔ $(DEF_COLOR)"
+	@echo "$(RESET_LINE)$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus compiling:$(GREEN) ✔ $(DEF_COLOR)"
 	@$(CC) -o $(NAME_BONUS) $(CFLAGS) $(INCS_DIR) $(OBJS_BONUS) $(LIBFT_A) $(LIBMLX_A) -L. -lX11 -lXext
 	@echo "$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus:		$(GREEN) ✔ $(DEF_COLOR)"
 
@@ -99,14 +99,14 @@ $(OBJS_DIR)%.o		:	$(SRCS_DIR)%.c | $(OBJSF)
 
 $(OBJS_DIR_BONUS)%.o:	$(SRCS_DIR_BONUS)%.c | $(OBJSF_BONUS)
 	@$(CC) $(CFLAGS) $(INCS_DIR_BONUS) -c $< -o $@
-	@echo "$(RESET_LINE)$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	compiling:	$(GREEN) $< $(DEF_COLOR)"
+	@echo "$(RESET_LINE)$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus compiling:$(GREEN) $< $(DEF_COLOR)"
 
 $(OBJSF)			:
 	@echo "$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	nothing to do"
 	@mkdir -p $(OBJS_DIR)
 
 $(OBJSF_BONUS)		:
-	@echo "$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	nothing to do"
+	@echo "$(BOLD_OPACITY)[ SO_LONG ]$(DEF_STYLE)	bonus nothing to do"
 	@mkdir -p $(OBJS_DIR_BONUS)
 
 clean				:
