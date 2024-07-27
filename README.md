@@ -1,1 +1,1 @@
-<center> <img src="https://github.com/user-attachments/assets/880db156-7aab-4896-8427-2a8f778a8f52"/> </center>
+![42_so_long](https://github.com/user-attachments/assets/af53ae6e-559f-4e9b-9d11-523af7851c3a)
