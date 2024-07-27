@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:50:51 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/26 11:17:44 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/28 01:10:52 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	makemap(int fd, t_data *gdata)
 		tmpbuff = tmpmap;
 		tmpmap = ft_gnljoin(tmpbuff, buff);
 		if (!tmpmap)
-			return (ft_putstr_fd("Error\ncreating the map\n", 2), free(buff), 1);
+			return (ft_putstr_fd("Error\nmaking the map\n", 2), free(buff), 1);
 		free(buff);
 		buff = ft_get_next_line(fd);
 	}
@@ -83,6 +83,6 @@ int	makemap(int fd, t_data *gdata)
 		return (free(tmpmap), 1);
 	gdata->map = ft_split(tmpmap, '\n');
 	if (!gdata->map)
-		return (ft_putstr_fd("Error\ncreating the map\n", 2), free(tmpmap), 1);
+		return (ft_putstr_fd("Error\nmaking the map\n", 2), free(tmpmap), 1);
 	return (free(tmpmap), 0);
 }
