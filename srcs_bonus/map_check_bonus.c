@@ -6,7 +6,7 @@
 /*   By: ebengtss <ebengtss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 16:05:25 by ebengtss          #+#    #+#             */
-/*   Updated: 2024/07/26 10:47:40 by ebengtss         ###   ########.fr       */
+/*   Updated: 2024/07/29 20:12:13 by ebengtss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	checkmapsize(char **map)
 		return (ft_putstr_fd("Error\nmap too large\n", 2), 1);
 	while (tmpmap[i])
 		i++;
+	if (i < 3)
+		return (ft_putstr_fd("Error\nmap too small\n", 2), 1);
 	if ((i * 64) > 1080)
 		return (ft_putstr_fd("Error\nmap too large\n", 2), 1);
 	return (0);
