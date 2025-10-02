@@ -14,6 +14,6 @@ make
 make bonus
 # Compile l'exécutable 'so_long_bonus'
 
-./so_long_bonus maps/example.ber
+./so_long_bonus maps/exemple.ber
 # Lance le jeu avec la carte fournie en paramètre
 ```
