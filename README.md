@@ -2,18 +2,15 @@
 
 ![42_solong](https://github.com/user-attachments/assets/31b4f797-fc8e-419c-8824-ae446701f80c)
 
-## Présentation
-So Long est un projet graphique de l’École 42, dont l’objectif est de développer un jeu 2D simple utilisant la bibliothèque MiniLibX pour gérer l’affichage, les textures et les événements.
-Il met l’accent sur la programmation en C appliquée à la création d’une interface graphique, la gestion des entrées utilisateur et la structuration d’un gameplay basique.
+## Presentation
+So Long is a graphics-oriented project from 42 School, whose goal is to develop a simple 2D game using the MiniLibX library to manage display, textures, and events.
+It focuses on C programming applied to the creation of a graphical elements, user input management, and the structuring of basic gameplay.
 
-## Utilisation
+## Usage
 ```
-make
-# Compile l'exécutable 'so_long'
-
 make bonus
-# Compile l'exécutable 'so_long_bonus'
+# Compiles the executable 'so_long_bonus'
 
-./so_long_bonus maps/exemple.ber
-# Lance le jeu avec la carte fournie en paramètre
+./so_long_bonus maps/example.ber
+# Launches the game with the map provided as a parameter
 ```
